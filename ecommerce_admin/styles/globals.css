@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input, textarea, select{
+    @apply border-2 border-gray-200 px-1 rounded-md w-full py-1 px-3;
+    @apply mb-2;
+}
+input:focus, textarea:focus, select:focus{
+    @apply border-blue-600;
+}
+h1{
+    @apply text-gray-900 mb-5 text-lg;
+}
+label{
+    @apply text-gray-900 text-sm;
+}
+img{
+  max-height:  100%;
+}
+.button-primary-version {
+    @apply bg-primary text-white py-1 px-4 rounded-md shadow-sm;
+  }
+  
+  table.basic-table-products {
+    @apply w-full  bg-white rounded-sm shadow-md; 
+  }
+  
+  table.basic-table-products thead tr td, 
+  table.basic-table-products thead tr th {
+    @apply text-sm text-gray-600 uppercase border-b border-gray-300 px-5 py-3;
+  }
+  
+  table.basic-table-products tr td {
+    @apply p-1 px-5 py-1; 
+  }
+  
+  table.basic-table-products a {
+    @apply  py-1 px-4 text-sm rounded-md inline-flex mx-1 items-center gap-1 ;
+  }
+/* .button-default, .button-red {
+    @apply px-5 py-2 rounded-md
+} */
+.button-red{
+  @apply bg-red-200  text-red-600 py-1 px-4 rounded-md shadow-sm;
+}
+.button-default{
+  @apply bg-white text-gray-800 border border-gray-200 py-1 px-4 rounded-md shadow-sm;
+}
