@@ -145,7 +145,7 @@ export default function ProductForm({_id, title:existingTitle, description:exist
                 <div>
                     Upload image
                 </div>
-                <input type = "file" onChange = {uploadImages} className="hidden"/>
+                <input type = "file" multiple onChange = {uploadImages} className="hidden"/>
                 </label>
                 {!images?.length && (
                  <div>No photos in this product</div>   
