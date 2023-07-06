@@ -13,6 +13,7 @@ export default function OrdersPage() {
         <Layout>
             <h1>Orders</h1>
             <table className="basic-table-products">
+
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -21,6 +22,7 @@ export default function OrdersPage() {
                         <th>Products</th>
                     </tr>
                 </thead>
+                
                 <tbody>
                     {orders.length > 0 && orders.map(order => (
                         <tr key= '{order._id}'>
