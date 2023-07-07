@@ -54,9 +54,9 @@ export default function Products () {
                     <>
                         <tr key = {product._id}>
                             <td className="flex justify-center items-center">
-                                <button onClick={() => handleImageChange(product._id, -1)}> {"<"} </button>
+                                <button  className = "px-1" onClick={() => handleImageChange(product._id, -1)}> {"<"} </button>
                                 <img src = {product.images[product.currentImageIndex]} className = "h-10 max-w-100 justify-center items-center"/>
-                                <button onClick={() => handleImageChange(product._id, 1)}> {">"} </button>
+                                <button className = "px-1" onClick={() => handleImageChange(product._id, 1)}> {">"} </button>
                                 
                             </td>
                             <td>{product.title}</td>
