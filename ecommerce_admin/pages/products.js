@@ -90,7 +90,7 @@ export default function Products () {
                         </tr>
                         {product.showDescription &&
                             <tr>
-                                <td colSpan="4">{product.description}</td>
+                                <td colSpan="4" className="text-justify">Description:<br/>{product.description}</td>
                             </tr>
                         }
                         </>
