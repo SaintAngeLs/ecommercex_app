@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useRef, useState } from 'react';
 
 import SwiperNavButtons from './SwiperNavButtons';
+import ShopData from './ShopData';
 
 
 SwiperCore.use([EffectFade, Navigation]);
@@ -134,8 +135,9 @@ const PageIntro = () => {
         <SwiperNavButtons/>
         
       </Swiper>
-
-      <div className="shop-data">
+      
+      <ShopData/>
+      {/* <div className="shop-data">
         <div className="container">
           <ul className="shop-data__items">
             <li>
@@ -163,7 +165,7 @@ const PageIntro = () => {
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

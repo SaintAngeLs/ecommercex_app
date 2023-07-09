@@ -21,6 +21,7 @@
     "mongoose": "^7.2.2",
     "next": "13.4.4",
     "react": "18.2.0",
+    "react-animate-on-scroll": "^2.1.7",
     "react-dom": "18.2.0",
     "react-id-swiper": "^4.0.0",
     "stripe": "^12.8.0",
