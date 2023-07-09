@@ -3,15 +3,17 @@ import SwiperCore, { EffectFade, Navigation } from 'swiper/core';
 import 'swiper/css'
 import styled from 'styled-components';
 
-
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useRef, useState } from 'react';
+
 import SwiperNavButtons from './SwiperNavButtons';
 
 
 SwiperCore.use([EffectFade, Navigation]);
 
 const Slide = styled.div`
-  height: 450px;
+  height: 650px;
   position: relative;
   background-repeat: no-repeat;
   background-position: center;
@@ -42,6 +44,7 @@ const Container = styled.div`
 const SlideContent = styled.div`
   margin-top: auto;
   margin-bottom: 40px;
+  margin-left: 5rem;
   @media (max-width: 600px) {
     margin-bottom: 80px;
     margin-top: 0;
@@ -54,6 +57,7 @@ const Title = styled.h2`
   font-weight: 600;
   line-height: 120%;
   margin-bottom: 45px;
+
   @media (max-width: 600px) {
     font-size: 64px;
     width: 600px;
@@ -73,10 +77,11 @@ const Icon = styled.i`
   width: 40px;
   height: 40px;
   color: #fff;
-  font-size: 15px;
+  font-size: 50px;
   margin-right: 10px;
   background-color: var(--color-orange);
   border-radius: 100%;
+  margin-right: 2rem;
 `;
 
 
@@ -107,7 +112,7 @@ const PageIntro = () => {
               <SlideContent>
                 <Title>Sale of the summer collection</Title>
                 <ShopButton href="#">
-                  <Icon className="icon-right"></Icon>Shop now
+                    <Icon className="icon-right"><FontAwesomeIcon icon={faArrowRight} /></Icon>Shop now
                 </ShopButton>
               </SlideContent>
             </Container>
@@ -120,7 +125,7 @@ const PageIntro = () => {
               <SlideContent>
                 <Title>Make your house into a home</Title>
                 <ShopButton href="#">
-                  <Icon className="icon-right"></Icon>Shop now
+                  <Icon className="icon-right"><FontAwesomeIcon icon={faArrowRight} /></Icon>Shop now
                 </ShopButton>
               </SlideContent>
             </Container>
