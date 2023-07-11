@@ -8,12 +8,13 @@ import BarsIcon from "./icons/Bars";
 const StyledHeader = styled.header`
     background-color: #222;
     font-weight: 500;
+    position: relative;
 `;
 const Logo = styled(Link)`
     color: #fff;
     text-decoration: none;
     position: relative;
-    z-index: 3;
+    z-index: 1000;
 `;
 
 const Wrapper = styled.div`
@@ -28,16 +29,18 @@ const StyledMavigation = styled.nav`
 
     gap: 20px;
     position: fixed;
-    top: 0px;
+    top: 60px;
     bottom: 0;
     left: 20px;
     right: 0;
-    padding: 70px 20px 20px;
+    padding: 10px 10px 20px;
     background-color: #222;
+    z-index: 1000;
     @media screen  and (min-width: 768px){
         display: flex;
-        position: static;
+        position: sticky;
         padding: 0;
+        z-index: 1000;
     }
 `;
 const NavigationLink = styled(Link)`
@@ -56,7 +59,7 @@ const NavButton = styled.button`
     border: 0;
     color: #fff;
     position: relative;
-    z-index: 3;
+    z-index: 1000;
     cursor: pointer;
     @media screen  and (min-width: 768px){
         display: none;

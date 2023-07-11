@@ -7,11 +7,17 @@ const ShopDataStyled = styled.div`
   bottom: 0;
   left: 0;
   width: 60%;
+  margin-top: 6rem;
+  display: block;
   position: absolute;
   padding: 46px 70px 20px 0px;
-
-  @media (max-width: 600px) {
-    display: block;
+  @media  (max-width: 900px) {
+    padding: 10px 46px 0px 20px;
+    width: 60%;
+    
+  }
+  @media  (max-width: 600px), (max-height: 600px) {
+    display: none;
   }
   
   &:before {
@@ -34,21 +40,26 @@ const ShopDataItems = styled.ul`
   display: flex;
   justify-content: flex-end;
   position: relative;
+  @media (max-width: 900px) {
+    display: block;
+    margin-left: 10px;
+  }
+
 `;
 
 const DataItem = styled.li`
   display: flex;
   margin-left: 50px;
 
+  @media (max-width: 900px) {
+    margin-left: 0px;
+  }
+
   @media (max-width: 600px) {
     display: block;
     margin-left: 30px;
   }
 
-  @media (min-width: 960px) {
-    margin-left: 30px;
-    display: flex;
-  }
 `;
 
 const DataItemIcon = styled(FontAwesomeIcon)`
@@ -64,14 +75,20 @@ const DataItemIcon = styled(FontAwesomeIcon)`
   background: var(--color-orange-light);
   justify-content: center;
   align-items: center;
+  @media (max-width: 900px) {
+    margin-bottom: 2px;
+  }
 
   @media (max-width: 600px) {
     margin-bottom: 15px;
   }
 
+    
+
   @media (min-width: 960px) {
     margin-bottom: 0;
   }
+
 `;
 
 const DataItemContent = styled.div`

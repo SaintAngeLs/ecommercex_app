@@ -23,25 +23,27 @@ const SwiperButtonPrev = styled.button`
   display: none;
   background-color: rgba(255, 255, 255, 0.12);
   
-  @media (max-width: 600px) {
-    width: 52px;
-    height: 52px;
-    bottom: 30px;
-    font-size: 17px;
-    display: flex;
-  }
   
   @media (max-width: 992px) {
-    width: 72px;
-    height: 72px;
+    width: 42px;
+    height: 42px;
     bottom: 30px;
     font-size: 21px;
     display: flex;
+    padding: 10px;
+  }
+
+  @media (max-width: 600px) {
+    width: 32px;
+    height: 32px;
+    bottom: 30px;
+    font-size: 17px;
+    display: flex;
+    margin-right:20px;
   }
   
   &:before {
     color: #FFF;
-
     font-family: 'Font Awesome';
     svg {
       // Set the size and color of the icon
@@ -82,20 +84,23 @@ const SwiperButtonNext = styled.button`
   display: none;
   background-color: rgba(255, 255, 255, 0.12);
   
-  @media (max-width: 600px) {
-    width: 52px;
-    height: 52px;
-    bottom: 30px;
-    font-size: 17px;
-    display: flex;
-  }
+  
   
   @media (max-width: 992px) {
-    width: 72px;
-    height: 72px;
+    width: 42px;
+    height: 42px;
     bottom: 30px;
     font-size: 21px;
     display: flex;
+  }
+
+  @media (max-width: 600px) {
+    width: 32px;
+    height: 32px;
+    bottom: 30px;
+    font-size: 17px;
+    display: flex;
+    padding: 10px;
   }
   
   &:before {
@@ -105,16 +110,18 @@ const SwiperButtonNext = styled.button`
   
   &:hover {
     background: #FFF;
-    svg {
-      // Set the size and color of the icon
-      width: 15px;
-      height: 15px;
-      color: #FFF;
-    }
+    
     
     &:before {
-      color: #000;
+      color: #000; 
+      svg {
+        // Set the size and color of the icon
+        width: 15px;
+        height: 15px;
+        color: #FFF;
     }
+    }
+   
   }
   
   &.swiper-button-next {
