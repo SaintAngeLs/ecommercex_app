@@ -8,12 +8,29 @@ const StyledFooter = styled.footer`
   color: #fff;
   padding: 20px;
   text-align: center;
+
+  
+  @media screen and (min-width: 576px) {
+    padding: 40px;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 60px;
+  }
 `;
 
 const FooterContent = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
+  
+  @media screen and (max-width: 576px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 const FooterLink = styled(Link)`
@@ -30,13 +47,35 @@ const FooterLink = styled(Link)`
 const FooterTop = styled.div`
   display: grid;
   gap: 10px;
+  font-size: 14px;
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    font-size: 11px;
+  }
 `;
 
 const FooterBottom = styled.div`
   padding: 20px 0;
   border-top: 1px solid #EBEBEB;
   text-align: center;
-  font-size: 11px;
+  font-size: 14px;
+
+  @media screen and (min-width: 576px) {
+    padding: 10px 0;
+    font-size: 10px;
+  }
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  div {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
 `;
 
 export default function Footer() {

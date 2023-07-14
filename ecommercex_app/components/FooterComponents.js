@@ -20,7 +20,7 @@ const FooterList = styled.ul`
 `;
 
 const FooterListItem = styled.li`
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   display: flex;
 `;
 
@@ -30,6 +30,9 @@ const FooterLink = styled.a`
 
 const FooterSectionStyled = styled.div`
   margin: 20px;
+  @media screen and (max-width: 576px) {
+    margin: 5px;
+  }
 `;
 
 const FooterContent = styled.div`
