@@ -48,7 +48,6 @@ const ColumnsWrapper = styled.div`
         img{
             max-width: 100%;
         }
-
     }
 `;
 
@@ -66,8 +65,9 @@ const Column = styled.div`
 export default function Featured({product}) {
     const {addProduct} = useContext(CartContext);
     function addFeaturedToCart() {
-        addProduct(previous => [...previous, product._id]);
+        addProduct(product._id);
     }
+    console.log("FFFFF the product id in the featured:", product)
     return(
         <BG>
             <Center>
@@ -75,23 +75,22 @@ export default function Featured({product}) {
                     <Column>
                         <div>
                             <Title>{product?.title}</Title>
-                                <Description>
-                                    {product?.description}
-                                </Description>
-                                <ButtonsWrapper>
-                                    <ButtonLink href = {'/product/'+product?._id}  outline white>
-                                        Read more
-                                    </ButtonLink>
-                                    <Button white onClick = {addFeaturedToCart}>
-                                        <CartIcon/>
-                                        Add to card
-                                    </Button>
-                                </ButtonsWrapper>
-                                
+                            <Description>
+                                {product?.description}
+                            </Description>
+                            <ButtonsWrapper>
+                                <ButtonLink href = {'/product/'+product?._id}  outline white>
+                                    Read more
+                                </ButtonLink>
+                                <Button white onClick = {addFeaturedToCart}>
+                                    <CartIcon/>
+                                    Add to card
+                                </Button>
+                            </ButtonsWrapper> 
                         </div>
                     </Column>
                     <Column>
-                        <img src = "https://ecommersenextapp.s3.amazonaws.com/1685811922548-3948159092.jpg"></img>
+                        <img src = "https://ecommersenextapp.s3.amazonaws.com/1688752861545-9797637573.webp"></img>
                     </Column>
                 </ColumnsWrapper>
                 

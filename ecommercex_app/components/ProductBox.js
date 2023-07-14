@@ -76,8 +76,6 @@ export default function ProductBox({_id, title, description, price, images}) {
                         To cart
                     </Button>
                 </PriceRow>
-
-               
             </ProducInfoBox>
         </ProductWrapper>
         

@@ -59,7 +59,7 @@ const SlideContent = styled.div`
   font-size: 64px;
   @media (max-width: 600px), (max-height: 600px) {
     margin-bottom: 80px;
-    margin-top: 6rem;
+    margin-top: 1rem;
     margin-left: 1rem;
   }
 `;
@@ -70,11 +70,12 @@ const Title = styled.h2`
   font-weight: 600;
   line-height: 120%;
   margin-bottom: 45px;
-
+  margin-left: 3rem;
   @media (max-width: 600px) {
     font-size: 45px;
-    width: 260px;
-    margin-left: 10px 
+    width: 300px;
+    margin-left: 10px;
+    line-height: 120%;
   }
 `;
 
@@ -87,13 +88,17 @@ const Icon = styled.i`
   height: 40px;
   color: #fff;
   font-size: 50px;
-  margin-right: 10px;
+
   background-color: var(--color-orange);
   border-radius: 100%;
   margin-right: 2rem;
+  margin-left: 3rem;
   transition: all 0.3s ease;
   svg {
     color: ${props => props.color || "#fff"};
+  }
+  @media (max-width: 600px) {
+    margin-left: 1rem;
   }
 `;
 
@@ -114,6 +119,9 @@ const ShopButton = styled.a`
         color: silver;
       }
     }
+  }
+  @media (max-width: 600px) {
+    font-size: 35px;
   }
 
 `;

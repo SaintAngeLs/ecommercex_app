@@ -35,6 +35,7 @@ const Price = styled.span`
 
 export default function PeodutPage({product}) {
     const {addProduct} = useContext(CartContext);
+    
     return(
         <>
             <Header/>
@@ -44,6 +45,8 @@ export default function PeodutPage({product}) {
                         <ProductImges images = {product.images}/>
                     </WhiteBox>
                     <div>
+                        {console.log("=====================================")}
+    {console.log("ID in the [id].js:", product._id)}
                         <Title>{product.title}</Title>
                         <p>{product.description}</p>
                         <PriceRow>
@@ -57,7 +60,6 @@ export default function PeodutPage({product}) {
                                 onClick={() => addProduct(product._id)}><CartIcon/>Add to cart</Button>
                             </div>
                         </PriceRow>
-                       
                     </div>
                 </ColWrapper>
             </Center>
@@ -68,9 +70,12 @@ export default function PeodutPage({product}) {
 
 export async function getServerSideProps(context) {
     await mongooseConnect();
+
     const {id} = context.query;
     
-    const product = await Product.findById(id)
+    
+    const product = await Product.findById(id);
+
     return{
         props: {
             product: JSON.parse(JSON.stringify(product)),
