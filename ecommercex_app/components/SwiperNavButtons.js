@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 
 const SwiperButtonPrev = styled.button`
-  bottom: 20px;
+  bottom: 60px;
   top: auto;
   transform: translateX(50%);
   right: 14%;
@@ -67,7 +67,7 @@ const SwiperButtonPrev = styled.button`
 `;
 
 const SwiperButtonNext = styled.button`
-  bottom: 20px;
+  bottom: 60px;
   top: auto;
   transform: translateX(50%);
   right: 7%;

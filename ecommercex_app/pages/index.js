@@ -19,13 +19,16 @@ export default function Home({ featuredProduct, newProducts }) {
         <title>Eccommerce</title>
       </Head>
       <Header />
+
+      
       <PageIntro />
       
-        <Featured product={featuredProduct} />
-  {  console.log("featuredProduct:", featuredProduct) }
+      <Featured product={featuredProduct} />
+  
       {newProducts && (
         <NewProducts products={newProducts} />
       )}
+
       <Footer />
     </div>
   );
