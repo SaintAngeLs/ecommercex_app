@@ -7,6 +7,10 @@ import { CartContext } from "./CartContext";
 
 import BarsIcon from "./icons/Bars";
 import CartIcon from "./icons/CartIcon";
+import HomeIcon from "./icons/HomeIcon";
+import AllProducts from "./icons/AllProductsIcon";
+import CategoriesIcon from "./icons/CategoriesIcon";
+import UserIcon from "./icons/UserIcon";
 
 const StyledHeader = styled.header`
     background-color: #222;
@@ -52,19 +56,22 @@ const NavigationLink = styled(Link)`
     color: #aaa;
     text-decoration: none;
     padding: 10px;
-    min-width: 80px; 
-    margin-left: 10px;
-    margin-right:10px;
+    min-width: 100px; 
+    margin-left: px;
+
     @media screen  and (min-width: 768px){
         padding: 0;
     }
 `;
 
 const NavigationLinkContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    @media screen  and (max-width: 768px){
+        max-width: 40%;
+    }
 `;
 
 const NavButton = styled.button`
@@ -82,6 +89,13 @@ const NavButton = styled.button`
         padding: 0;
     }
 `;
+const IconWrapper = styled.div`
+  width: 24px; // Set to your preferred width
+  height: 24px; // Set to your preferred height
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 
 
@@ -94,13 +108,43 @@ export default function Header() {
                 <Wrapper>
                     <Logo href = {'/'}>Ecommerce</Logo>
                     <StyledMavigation mobileNavActive = {mobileNavActive}>
-                    <NavigationLink href={'/'}><NavigationLinkContainer>Home</NavigationLinkContainer></NavigationLink>
-                    <NavigationLink href={'/products'}><NavigationLinkContainer>All products</NavigationLinkContainer></NavigationLink>
-                    <NavigationLink href={'/categories'}><NavigationLinkContainer>Categories</NavigationLinkContainer></NavigationLink>
-                    <NavigationLink href={'/account'}><NavigationLinkContainer>Account</NavigationLinkContainer></NavigationLink>
+                    <NavigationLink href={'/'}>
+                        <NavigationLinkContainer> 
+                            <IconWrapper>
+                                <HomeIcon/>
+                            </IconWrapper>
+                            Home
+                        </NavigationLinkContainer>
+                    </NavigationLink>
+                    <NavigationLink href={'/products'}>
+                        <NavigationLinkContainer>
+                            <IconWrapper>
+                                <AllProducts/>
+                            </IconWrapper>
+                            All products
+                        </NavigationLinkContainer>
+                    </NavigationLink>
+                    <NavigationLink href={'/categories'}>
+                        <NavigationLinkContainer>
+                            <IconWrapper>
+                                <CategoriesIcon/>
+                            </IconWrapper>
+                            Categories
+                        </NavigationLinkContainer>
+                    </NavigationLink>
+                    <NavigationLink href={'/account'}>
+                        <NavigationLinkContainer>
+                            <IconWrapper>
+                                <UserIcon/>
+                            </IconWrapper>
+                            Account
+                        </NavigationLinkContainer>
+                        </NavigationLink>
                     <NavigationLink href={'/cart'}>
                     <NavigationLinkContainer>
-                        <CartIcon/>
+                        <IconWrapper>
+                            <CartIcon/>
+                        </IconWrapper>
                         <span>Cart</span>
                         <span>({cartProducts.length})</span>
                     </NavigationLinkContainer>
