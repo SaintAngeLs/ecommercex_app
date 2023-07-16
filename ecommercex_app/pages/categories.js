@@ -56,12 +56,15 @@ export default function CategoriesPage({mainCategories, categoriesProducts, wish
                             </div>
                         </CategoryTitle>
                         <CategoryGridDisp>
-                            {categoriesProducts[category._id].map((product, pIndex) => (
-                                    <RevealWrapper delay ={pIndex*50}>
-                                        <ProductBox {...product} wished = {wishedProducts.includes(product._id)}/>
-                                    </RevealWrapper>
-                                ))
-                            }
+                        {categoriesProducts[category._id]?.length ? (
+                            categoriesProducts[category._id].map((product, pIndex) => (
+                            <RevealWrapper key={product._id} delay={pIndex * 50}>
+                                <ProductBox {...product} wished={wishedProducts.includes(product._id)} />
+                            </RevealWrapper>
+                            ))
+                        ) : (
+                            <div>The products will be added sooner.</div>
+                        )}
 
                         </CategoryGridDisp>
                     </CategoryWrapper>
