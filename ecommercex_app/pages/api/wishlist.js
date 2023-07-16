@@ -1,0 +1,32 @@
+import { mongooseConnect } from "@/lib/mongoose";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@pages/api/auth/[...nextauth]";
+import { WishedProduct } from "@/models/WishedProduct";
+
+export default async function handle(req, res){
+    await mongooseConnect();
+
+    const {user} = await getServerSession(req, res, authOptions);
+
+    if(req.method === 'POST')
+    {
+        const {product} = req.body;
+        const whishedDocument = await WishedProduct.findOne({userEmail:user.email, product});
+
+        if(whishedDocument)
+        {
+            await WishedProduct.findBuIdAndDelete(whishedDocument._id);
+            res.json({whishedDocument});
+        }
+        else
+        {
+            await WishedProduct.create({userEmail:user.email, product});
+            res.json("create");
+        }
+    }
+
+    if(req.method === 'GEY')
+    {
+        res.json(await WishedProduct.find({userEmail:user.email}).populate('product'));
+    }
+};
