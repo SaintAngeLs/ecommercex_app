@@ -4,7 +4,7 @@ import {Product} from "@/models/Product";
 export default async function handle(req, res) {
 
   await mongooseConnect();
-  
+
   const {categories, sort, phrase, ...filters} = req.query;
   let [sortField, sortOrder] = (sort || '_id-desc').split('-');
 
@@ -28,7 +28,7 @@ export default async function handle(req, res) {
     productsQuery,
     null,
     {
-      sort:{[sortField]:sortOrder==='asc' ? 1 : -1}
+      sort:{[sortField]:sortOrder==='ascending' ? 1 : -1}
     })
   );
 }
