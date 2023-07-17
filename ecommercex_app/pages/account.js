@@ -1,4 +1,14 @@
+import Button from "@/components/Button";
+import Center from "@/components/Center";
+import Googleimage from "@/components/GoogleImage";
+import Header from "@/components/Header";
+import Spinner from "@/components/Spinner";
+import Tabs from "@/components/Tabs";
+import WhiteBox from "@/components/WhiteBox";
+import axios from "axios";
 import {signIn, signOut, useSession} from "next-auth/react";
+import { RevealWrapper } from "next-reveal";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const ColsWrapper = styled.div`
@@ -54,7 +64,7 @@ export default function AccountPage(){
     }
     useEffect(() => {
         if (!session) {
-        return;
+        return;  
         }
         setAddressLoaded(false);
         setWishlistLoaded(false);
@@ -96,7 +106,7 @@ export default function AccountPage(){
     }
     return (
         <>
-        <Header />
+        <Header/>
         <Center>
             <ColsWrapper>
             <div>

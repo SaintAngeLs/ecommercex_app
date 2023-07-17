@@ -7,4 +7,4 @@ const WhiteBox = styled.div`
 `;
 
 
-export default WhiteBox;``
+export default WhiteBox;

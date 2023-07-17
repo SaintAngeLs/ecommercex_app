@@ -1,5 +1,8 @@
 import { CartContextProvider } from "@/components/CartContext";
+import { SessionProvider } from "next-auth/react";
 import {createGlobalStyle} from "styled-components";
+
+
 
 const GlobalStyles = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
@@ -10,15 +13,22 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Poppins', sans-serif;
     background-color: #eee;
   }
+  hr{
+    display: block;
+    border:0;
+    border-top:1px solid #ccc;
+  }
 `;
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps: {session, ...pageProps} }) {
   return (
     <>
       <GlobalStyles/>
-      <CartContextProvider>
-        <Component {...pageProps} /> 
-      </CartContextProvider>
+      <SessionProvider session={session}>
+        <CartContextProvider>
+          <Component {...pageProps} /> 
+        </CartContextProvider>
+      </SessionProvider>
 
     </>
   );
