@@ -2,6 +2,7 @@ import Button from "@/components/Button";
 import Center from "@/components/Center";
 import Googleimage from "@/components/GoogleImage";
 import Header from "@/components/Header";
+import Input from "@/components/Input";
 import Spinner from "@/components/Spinner";
 import Tabs from "@/components/Tabs";
 import WhiteBox from "@/components/WhiteBox";

@@ -11,6 +11,8 @@ import Footer from '@/components/Footer'
 import PageIntro from '@/components/pageIntro'
 import { WishedProduct } from '@/models/WishedProduct'
 import { authOptions } from './api/auth/[...nextauth]'
+import { Setting } from '@/models/Setting'
+import { getServerSession } from 'next-auth'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -36,16 +38,16 @@ export default function Home({ featuredProduct, newProducts, wishedNewProducts }
   );
 }
 
-export async function getServerSideProps() {
-  //const featuredProductId = '64a853129268e294d796a570';
+export async function getServerSideProps(categoryx) {
+  const featuredProductId = '64a853129268e294d796a570';
   await mongooseConnect();
-  const featuredProductSetting = await Setting.findOne({name:'featuredProductId'});
-  const featuredProductId = featuredProductSetting.value;
+  // const featuredProductSetting = await Setting.findOne({name:'64a853129268e294d796a570'});
+  // const featuredProductId = featuredProductSetting.value;
   const featuredProduct = await Product.findById(featuredProductId);
   console.log("featuredProduct: ", featuredProduct._id);
   const newProducts = await Product.find({}, null, { sort: { '_id': -1 }, limit: 10 });
   
-  const session = await getServerSession(ctx.req, ctx.res, authOptions);
+  const session = await getServerSession(categoryx.req, categoryx.res, authOptions);
   const wishedNewProducts = session?.user
   ? await WishedProduct.find({
       userEmail:session.user.email,

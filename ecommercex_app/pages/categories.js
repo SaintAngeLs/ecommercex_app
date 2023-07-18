@@ -9,6 +9,7 @@ import {authOptions} from "@/pages/api/auth/[...nextauth]";
 import Link from "next/link";
 import ProductBox from "@/components/ProductBox";
 import { RevealWrapper } from "next-reveal";
+import { WishedProduct } from "@/models/WishedProduct";
 
 const CategoryWrapper = styled.div`
     margin-bottom: 60px;

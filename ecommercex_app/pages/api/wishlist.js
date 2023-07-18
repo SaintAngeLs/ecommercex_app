@@ -1,7 +1,8 @@
 import { mongooseConnect } from "@/lib/mongoose";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@pages/api/auth/[...nextauth]";
+
 import { WishedProduct } from "@/models/WishedProduct";
+import { authOptions } from "./auth/[...nextauth]";
 
 export default async function handle(req, res){
     await mongooseConnect();
@@ -25,8 +26,10 @@ export default async function handle(req, res){
         }
     }
 
-    if(req.method === 'GEY')
+    if (req.method === 'GET') 
     {
-        res.json(await WishedProduct.find({userEmail:user.email}).populate('product'));
+        res.json(
+          await WishedProduct.find({userEmail:user.email}).populate('product')
+        );
     }
 };
