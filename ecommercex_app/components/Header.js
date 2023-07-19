@@ -11,6 +11,7 @@ import HomeIcon from "./icons/HomeIcon";
 import AllProducts from "./icons/AllProductsIcon";
 import CategoriesIcon from "./icons/CategoriesIcon";
 import UserIcon from "./icons/UserIcon";
+import PartnershipIcon from "./icons/PartnershipIcon";
 
 const StyledHeader = styled.header`
     background-color: #222;
@@ -92,9 +93,48 @@ const NavButton = styled.button`
 const IconWrapper = styled.div`
   width: 24px; // Set to your preferred width
   height: 24px; // Set to your preferred height
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const DropdownContainer = styled.div`
+  position: relative;
+  display: inline-block;
+`;
+
+const DropdownToggle = styled.button`
+  display: block;
+  color: #aaa;
+  text-decoration: none;
+  min-width: 30px;
+  padding: 10px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px; /* Adjust the font size as desired */
+  svg {
+    height: 20px;
+  }
+  @media screen and (min-width: 768px) {
+    padding: 0;
+  }
+`;
+
+const DropdownMenu = styled.ul`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: ${(props) => (props.open ? "block" : "none")};
+  background-color: #222;
+  padding: 10px;
+  margin: 0;
+  list-style: none;
+  z-index: 1;
+`;
+
+const DropdownItem = styled.li`
+  margin-bottom: 5px;
 `;
 
 
@@ -102,6 +142,14 @@ const IconWrapper = styled.div`
 export default function Header() {
     const {cartProducts} = useContext(CartContext)
     const [mobileNavActive, setMobileNavActive] = useState(false);
+
+
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setDropdownOpen(!dropdownOpen);
+      };
+
     return (
         <StyledHeader>
             <Center>
@@ -132,6 +180,30 @@ export default function Header() {
                             Categories
                         </NavigationLinkContainer>
                     </NavigationLink>
+                    <DropdownContainer>
+                        <DropdownToggle onClick={toggleDropdown}>
+                            <NavigationLinkContainer> 
+                                <IconWrapper>
+                                    <PartnershipIcon />  
+                                </IconWrapper>
+                                Partnerships
+                            </NavigationLinkContainer> 
+                        </DropdownToggle>
+                        <div classname="flex.items-center">
+                            <DropdownMenu open={dropdownOpen}>
+                                <DropdownItem>
+                                    <NavigationLink href="#">Artist 1</NavigationLink>
+                                </DropdownItem>
+                                <DropdownItem>
+                                    <NavigationLink href="#">Artist 2</NavigationLink>
+                                </DropdownItem>
+                                <DropdownItem>
+                                    <NavigationLink href="#">Merchant</NavigationLink>
+                                </DropdownItem>
+                            </DropdownMenu>
+                        </div>
+                    </DropdownContainer>
+
                     <NavigationLink href={'/account'}>
                         <NavigationLinkContainer>
                             <IconWrapper>
