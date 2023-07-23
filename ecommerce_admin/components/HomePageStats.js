@@ -2,9 +2,11 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Spineer from './Spinner';
 import { subHours } from "date-fns";
-import { BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip, Bar } from 'recharts';
+import { BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip,Bar } from 'recharts';
+import { Typography, Card, CardContent, Grid,  CardHeader, IconButton, CircularProgress } from '@material-ui/core';
+import { Money } from '@material-ui/icons';
 
-export default function HomePageStarts() {
+export default function HomePageStats() {
     const [orders, setOrders] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -29,7 +31,7 @@ export default function HomePageStarts() {
         return new Intl.NumberFormat("pl-PL").format(resultSum);
     }
 
-    function salesTotalNumber(sales){
+    function calculateSalesTotalNumber(sales){
         let resultSum = 0;
         sales.forEach((saleItem) => {
             const {line_items} = saleItem;
@@ -51,7 +53,7 @@ export default function HomePageStarts() {
     }
 
     const ordersToday = orders.filter(
-        (order) => new Date(order.createdAt) > subHours(new Date(), 24)
+        (order) => new Date(order.createdAt) < subHours(new Date(), 24)
     );
 
     const ordersPerWeek = orders.filter(
@@ -77,189 +79,223 @@ export default function HomePageStarts() {
     }
 
     return (
-        <div className='px-4'>
-            <h2>Total orders</h2>
-            <div className='tiles-grid'>
-                <div className='tile'>
-                    <h2 className='tile-header'>Today</h2>
-                    <div className='tile-number'>{ordersToday.length}</div>
-                    <div className='tile-desc'>{ordersToday.length} orders for today</div>
-                    <div className='tile-chart'>
-                        <ResponsiveContainer width='100%' height={200}>
-                            <BarChart data={generateHistogramData(["Today"], [ordersToday.length])}>
-                                <XAxis dataKey="name"/>
-                                <YAxis/>
-                                <Tooltip/>
-                            </BarChart>
-                        </ResponsiveContainer>
+      <Grid container spacing={3}>
+      <Grid item xs={12}>
+          <Typography variant="h4">Total orders</Typography>
+      </Grid>
 
-                    </div>
-                    
-                </div>
-                <div className="tile">
-          <h3 className="tile-header">This week</h3>
-          <div className="tile-number">{ordersPerWeek.length}</div>
-          <div className="tile-desc">{ordersPerWeek.length} orders this week</div>
-          <div className="tile-chart">
-            <ResponsiveContainer width="100%" height={200}>
-              <BarChart
-                data={generateHistogramData(["This week"], [ordersPerWeek.length])}
-              >
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Bar
-                  dataKey="orders"
-                  fill="rgba(75, 192, 192, 0.2)"
-                  stroke="rgba(75, 192, 192, 1)"
-                  strokeWidth={1}
-                />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-      </div>
-      <div className="tiles-grid">
-        <div className="tile">
-          <h3 className="tile-header">This month</h3>
-          <div className="tile-number">{ordersPerMonth.length}</div>
-          <div className="tile-desc">{ordersPerMonth.length} orders this month</div>
-          <div className="tile-chart">
-          <ResponsiveContainer width="100%" height={200}>
-              <BarChart
-                data={generateHistogramData(["This month"], [ordersPerMonth.length])}
-              >
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Bar
-                  dataKey="orders"
-                  fill="rgba(75, 192, 192, 0.2)"
-                  stroke="rgba(75, 192, 192, 1)"
-                  strokeWidth={1}
-                />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-        <div className="tile">
-          <h3 className="tile-header">This year</h3>
-          <div className="tile-number">{ordersPerYear.length}</div>
-          <div className="tile-desc">{ordersPerYear.length} orders this year</div>
-          <div className="tile-chart">
-          <ResponsiveContainer width="100%" height={200}>
-              <BarChart
-                data={generateHistogramData(["This year"], [ordersPerYear.length])}
-              >
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Bar
-                  dataKey="orders"
-                  fill="rgba(75, 192, 192, 0.2)"
-                  stroke="rgba(75, 192, 192, 1)"
-                  strokeWidth={1}
-                />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-      </div>
+      <Grid item xs={12} sm={6} md={3}>
+          <Card>
+              <CardContent>
+                  <Typography color="textSecondary" gutterBottom>
+                      Today
+                  </Typography>
+                  <Typography variant="h5" component="h2">
+                      {ordersToday.length}
+                  </Typography>
+                  <Typography variant="body2" component="p">
+                      {ordersToday.length} orders for today
+                  </Typography>
+                  <ResponsiveContainer width='100%' height={200}>
+                      <BarChart
+                          data={generateHistogramData(["Today"], [ordersToday.length])}
+                      >
+                          <XAxis dataKey="name" />
+                          <YAxis />
+                          <Tooltip />
+                          <Bar dataKey="orders" fill="#3f51b5" />
+                      </BarChart>
+                  </ResponsiveContainer>
+              </CardContent>
+          </Card>
+      </Grid>
+      <Grid item xs={12} sm={6} md={3}>
+          <Card>
+              <CardContent>
+                  <Typography color="textSecondary" gutterBottom>
+                      This week
+                  </Typography>
+                  <Typography variant="h5" component="h2">
+                      {ordersPerWeek.length}
+                  </Typography>
+                  <Typography variant="body2" component="p">
+                      {ordersPerWeek.length} orders for this week
+                  </Typography>
+                  <ResponsiveContainer width='100%' height={200}>
+                      <BarChart
+                          data={generateHistogramData(["This week"], [ordersPerWeek.length])}
+                      >
+                          <XAxis dataKey="name" />
+                          <YAxis />
+                          <Tooltip />
+                          <Bar dataKey="orders" fill="#3f51b5" />
+                      </BarChart>
+                  </ResponsiveContainer>
+              </CardContent>
+          </Card>
+      </Grid>
 
-      <h2>Total Sales</h2>
-      <div className="tiles-grid">
-        <div className="tile">
-          <h3 className="tile-header">Today</h3>
-          <div className="tile-number">{calculateOrdersTotal(ordersToday)}</div>
-          <div className="tile-desc">{ordersToday.length} orders today</div>
-          <div className="tile-chart">
-            <ResponsiveContainer width="100%" height={200}>
-              <BarChart
-                data={generateHistogramData(["Today"], [ordersToday.length])}
-              >
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Bar
-                  dataKey="orders"
-                  fill="rgba(75, 192, 192, 0.2)"
-                  stroke="rgba(75, 192, 192, 1)"
-                  strokeWidth={1}
-                />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-        <div className="tile">
-          <h3 className="tile-header">This week</h3>
-          <div className="tile-number">{calculateOrdersTotal(ordersPerWeek)}</div>
-          <div className="tile-desc">{ordersPerWeek.length} sales this week</div>
-          <div className="tile-chart">
-          <ResponsiveContainer width="100%" height={200}>
-              <BarChart
-                data={generateHistogramData(["This week"], [ordersPerWeek.length])}
-              >
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Bar
-                  dataKey="orders"
-                  fill="rgba(75, 192, 192, 0.2)"
-                  stroke="rgba(75, 192, 192, 1)"
-                  strokeWidth={1}
-                />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-      </div>
-      <div className="tiles-grid">
-        <div className="tile">
-          <h3 className="tile-header">This month</h3>
-          <div className="tile-number">{calculateOrdersTotal(ordersPerMonth)}</div>
-          <div className="tile-desc">{ordersPerMonth.length} sales this month</div>
-          <div className="tile-chart">
-          <ResponsiveContainer width="100%" height={200}>
-              <BarChart
-                data={generateHistogramData(["This month"], [ordersPerMonth.length])}
-              >
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Bar
-                  dataKey="orders"
-                  fill="rgba(75, 192, 192, 0.2)"
-                  stroke="rgba(75, 192, 192, 1)"
-                  strokeWidth={1}
-                />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-        <div className="tile">
-          <h3 className="tile-header">This year</h3>
-          <div className="tile-number">{calculateOrdersTotal(ordersPerYear)}</div>
-          <div className="tile-desc">{ordersPerYear.length} sales this year</div>
-          <div className="tile-chart">
-            <ResponsiveContainer width="100%" height={200}>
-              <BarChart
-                data={generateHistogramData(["Today"], [orders.length])}
-              >
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Bar
-                  dataKey="orders"
-                  fill="rgba(75, 192, 192, 0.2)"
-                  stroke="rgba(75, 192, 192, 1)"
-                  strokeWidth={1}
-                />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-      </div>
-    </div>
+      <Grid item xs={12} sm={6} md={3}>
+          <Card>
+              <CardContent>
+                  <Typography color="textSecondary" gutterBottom>
+                      This Month
+                  </Typography>
+                  <Typography variant="h5" component="h2">
+                      {ordersPerMonth.length}
+                  </Typography>
+                  <Typography variant="body2" component="p">
+                      {ordersPerMonth.length} orders this month
+                  </Typography>
+                  <ResponsiveContainer width='100%' height={200}>
+                      <BarChart
+                          data={generateHistogramData(["This Month"], [ordersPerMonth.length])}
+                      >
+                          <XAxis dataKey="name" />
+                          <YAxis />
+                          <Tooltip />
+                          <Bar dataKey="orders" fill="#3f51b5" />
+                      </BarChart>
+                  </ResponsiveContainer>
+              </CardContent>
+          </Card>
+      </Grid>
+
+      <Grid item xs={12} sm={6} md={3}>
+          <Card>
+              <CardContent>
+                  <Typography color="textSecondary" gutterBottom>
+                      This Year
+                  </Typography>
+                  <Typography variant="h5" component="h2">
+                      {ordersPerYear.length}
+                  </Typography>
+                  <Typography variant="body2" component="p">
+                      {ordersPerYear.length} orders this year
+                  </Typography>
+                  <ResponsiveContainer width='100%' height={200}>
+                      <BarChart
+                          data={generateHistogramData(["This Year"], [ordersPerYear.length])}
+                      >
+                          <XAxis dataKey="name" />
+                          <YAxis />
+                          <Tooltip />
+                          <Bar dataKey="orders" fill="#3f51b5" />
+                      </BarChart>
+                  </ResponsiveContainer>
+              </CardContent>
+          </Card>
+      </Grid>
+
+      <Grid item xs={12}>
+          <Typography variant="h4">Total sales</Typography>
+      </Grid>
+
+      <Grid item xs={12} sm={6} md={3}>
+          <Card>
+              <CardContent>
+                  <Typography color="textSecondary" gutterBottom>
+                      Today
+                  </Typography>
+                  <Typography variant="h5" component="h2">
+                      {calculateSalesTotalNumber(ordersToday)}
+                  </Typography>
+                  <Typography variant="body2" component="p">
+                      {ordersToday.length} orders today
+                  </Typography>
+                  <ResponsiveContainer width='100%' height={200}>
+                      <BarChart
+                          data={generateHistogramData(["Today"], [ordersToday.length])}
+                      >
+                          <XAxis dataKey="name" />
+                          <YAxis />
+                          <Tooltip />
+                          <Bar dataKey="orders" fill="#3f51b5" />
+                      </BarChart>
+                  </ResponsiveContainer>
+              </CardContent>
+          </Card>
+      </Grid>
+      <Grid item xs={12} sm={6} md={3}>
+          <Card>
+              <CardContent>
+                  <Typography color="textSecondary" gutterBottom>
+                      This week
+                  </Typography>
+                  <Typography variant="h5" component="h2">
+                      {calculateSalesTotalNumber(ordersPerWeek)}
+                  </Typography>
+                  <Typography variant="body2" component="p">
+                      {ordersPerWeek.length} orders this week
+                  </Typography>
+                  <ResponsiveContainer width='100%' height={200}>
+                      <BarChart
+                          data={generateHistogramData(["This week"], [ordersPerWeek.length])}
+                      >
+                          <XAxis dataKey="name" />
+                          <YAxis />
+                          <Tooltip />
+                          <Bar dataKey="orders" fill="#3f51b5" />
+                      </BarChart>
+                  </ResponsiveContainer>
+              </CardContent>
+          </Card>
+      </Grid>
+      
+
+      <Grid item xs={12} sm={6} md={3}>
+          <Card>
+              <CardContent>
+                  <Typography color="textSecondary" gutterBottom>
+                      This Month
+                  </Typography>
+                  <Typography variant="h5" component="h2">
+                      {calculateSalesTotalNumber(ordersPerMonth)}
+                  </Typography>
+                  <Typography variant="body2" component="p">
+                      {ordersPerMonth.length} orders this month
+                  </Typography>
+                  <ResponsiveContainer width='100%' height={200}>
+                      <BarChart
+                          data={generateHistogramData(["This Month"], [ordersPerMonth.length])}
+                      >
+                          <XAxis dataKey="name" />
+                          <YAxis />
+                          <Tooltip />
+                          <Bar dataKey="orders" fill="#3f51b5" />
+                      </BarChart>
+                  </ResponsiveContainer>
+              </CardContent>
+          </Card>
+      </Grid>
+
+      <Grid item xs={12} sm={6} md={3}>
+          <Card>
+              <CardContent>
+                  <Typography color="textSecondary" gutterBottom>
+                      This Year
+                  </Typography>
+                  <Typography variant="h5" component="h2">
+                      {calculateSalesTotalNumber(ordersPerYear)}
+                  </Typography>
+                  <Typography variant="body2" component="p">
+                      {ordersPerYear.length} orders this year
+                  </Typography>
+                  <ResponsiveContainer width='100%' height={200}>
+                      <BarChart
+                          data={generateHistogramData(["This Year"], [ordersPerYear.length])}
+                      >
+                          <XAxis dataKey="name" />
+                          <YAxis />
+                          <Tooltip />
+                          <Bar dataKey="orders" fill="#3f51b5" />
+                      </BarChart>
+                  </ResponsiveContainer>
+              </CardContent>
+          </Card>
+      </Grid>
+  </Grid>
+    
 
     )
 }
