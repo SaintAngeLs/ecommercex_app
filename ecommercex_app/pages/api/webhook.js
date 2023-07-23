@@ -4,7 +4,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 import {buffer} from 'micro'
 
 // This is your Stripe CLI webhook secret for testing your endpoint locally.
-const endpointSecret = "whsec_daf727a4afe27afb257b4e213aeaa7fc32547dbcfafaa88ba62b0f62d2070c39";
+const endpointSecret = "whsec_8bc82e17263ccb7bb269a93aaa6415ca6387b5cc3b8bbb022fd10ae53a296c93";
 
 export default async function handler(req, res){
     await mongooseConnect();
