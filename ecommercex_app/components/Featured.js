@@ -90,7 +90,7 @@ export default function Featured({product}) {
                         </div>
                     </Column>
                     <Column>
-                        <img src = "https://ecommersenextapp.s3.amazonaws.com/1688752861545-9797637573.webp"></img>
+                        <img src = {product?.images[0]}></img>
                     </Column>
                 </ColumnsWrapper>
                 

@@ -6,7 +6,11 @@ import Header from "@/components/Header";
 import Input from "@/components/Input";
 import Table from "@/components/Table";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import { useSession } from "next-auth/react";
 import { useContext, useEffect, useState } from "react";
+import "react-toastify/dist/ReactToastify.css";
+
 import styled from "styled-components";
 
 
@@ -73,6 +77,7 @@ const CityHolder = styled.div`
 
 
 export default function CartPage() {
+    const {data:session} = useSession();
     const {cartProducts, addProduct, removeProduct, clearCart} = useContext(CartContext);
     const [products, setProducts] = useState([]);
     const [name, setName] = useState('');
@@ -80,8 +85,16 @@ export default function CartPage() {
     const [country, setCountry] = useState('');
     const [city, setCity] = useState('');
     const [postalCode, setPopstalCode] = useState('');
-    const [streetAdress, setStreetAddress] = useState('');
+    const [streetAddress, setStreetAddress] = useState('');
     const [success, setSuccess] = useState(false);
+    const [nameError, setNameError] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [cityError, setCityError] = useState("");
+    const [postalCodeError, setPostalCodeError] = useState("");
+    const [streetAddressError, setStreetAddressError] = useState("");
+    const [countryError, setCountryError] = useState("");
+    const [history] = useState("");
+
     useEffect(() => {
         if(cartProducts.length > 0)
         {
@@ -94,19 +107,39 @@ export default function CartPage() {
             setProducts([]);
         }
     }, [cartProducts])
+
     function moreOfThisProduct(id) {
         addProduct(id);
     }
+
     function lessOfThisProduct(id) {
         removeProduct(id);
     }
     async function goToPayment() {
+
+        const confirmed = window.confirm("Are you sure you want to proceed with the checkout?");
+
+        if (!confirmed) 
+        {
+            return;
+        }
+
+        if (!name || !email || !city || !postalCode || !streetAddress || !country) {
+            toast.error("Please fill in all required fields.");
+            return;
+        }
+      
+
         const response = await axios.post('/api/checkout', {
-            name, email, country, city, postalCode, streetAdress, cartProducts, 
+            name, email, country, city, postalCode, streetAddress, cartProducts, 
         });
         if(response.data.url)
         {
             window.location = response.data.url;
+        }
+        else 
+        {
+            toast.error("Checkout failed. Please try again.");
         }
     }
     let total = 0;
@@ -114,15 +147,121 @@ export default function CartPage() {
         const price = products.find(product => product._id === productId)?.price || 0;
         total += price;
     }
+
+    async function goToCOD() {
+        const confirmed = window.confirm("Are you sure you want to proceed with the checkout?");
+    
+        if (!confirmed) {
+          return;
+        }
+    
+        if (!name || !email || !city || !postalCode || !streetAddress || !country) {
+          toast.error("Please fill in all required fields.");
+          return;
+        }
+    
+        const response = await axios.post("/api/checkout", {
+          name,
+          email,
+          city,
+          postalCode,
+          streetAddress,
+          country,
+          cartProducts,
+        });
+    
+        if (response.data.url) {
+          window.location = response.data.url;
+        } else {
+          toast.error("Checkout failed. Please try again.");
+        }
+        const redirectUrl = `${process.env.NEXT_PUBLIC_URL}/cart?success=1`;
+
+        window.location.href = redirectUrl;
+      }
     
     useEffect(() => {
-        if (window.location.href.includes('success')) {
-            clearCart();
+
+        if (typeof window === 'undefined') 
+        {
+            return;
+        }
+        if (window.location.href.includes('success')) 
+        {
             setSuccess(true);
-        
+            clearCart();
         }
     }, [])
+
+    // useEffect(() => {
+    //     if(!session)
+    //     {
+    //         return;
+    //     }
+    //     axios.get('/api/address').then(response => {
+    //         setName(response.data?.name);
+    //         setEmail(response.data?.email);
+    //         setCity(response.data?.city);
+    //         setPopstalCode(response.data?.postalCode);
+    //         setStreetAddress(response.data?.streetAddress);
+    //         setCountry(response.data?.country);
+    //     }, [session]);
+    // })
     
+    // inputs validation
+    const validateName = () => {
+        if (!name) {
+            setNameError("Name is required.");
+            toast.error("Please enter your name.");
+        } else {
+            setNameError("");
+        }
+    };
+    const validateEmail = () => {
+        if (!email) {
+            setEmailError("Email is required.");
+            toast.error("Please enter your email.");
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
+            setEmailError("Invalid email format.");
+            toast.error("Please enter a valid email address.");
+        } else {
+            setEmailError("");
+        }
+    };
+
+    const validateCity = () => {
+        if (!city) {
+            setCityError("City is required.");
+            toast.error("Please enter your city.");
+        } 
+    };
+
+    const validatePostalCode = () => {
+        if (!postalCode) {
+            setPostalCodeError("Postal Code is required.");
+            toast.error("Please enter your Postal Code.");
+        } else {
+            setPostalCodeError("");
+        }
+    };
+
+    const validateStreetAddress = () => {
+        if (!streetAddress) {
+            setStreetAddressError("Address is required.");
+            toast.error("Please enter your Address.");
+        } else {
+            setStreetAddressError("");
+        }
+    };
+
+    const validateCountry = () => {
+        if (!country) {
+            setCountryError("Country is required.");
+            toast.error("Please enter your country.");
+        }
+    };
+    
+
     if(success)
     {
         return(
@@ -202,29 +341,54 @@ export default function CartPage() {
                            
                                 <Input type="text" placeholder="Name" value = {name} 
                                 name = {name}
-                                onChange={event => setName(event.target.value)}/>
+                                onChange={event => setName(event.target.value)}
+                                onBlur={validateName}/>
+
                                 <Input type="text" placeholder="Email" value = {email} 
                                 name = { email}
-                                onChange={event => setEmail(event.target.value)}/>
+                                onChange={event => setEmail(event.target.value)}
+                                onBlur={validateEmail}/>
+
                                 <Input type="text" placeholder="Country" value = {country} 
                                 name = { country}
-                                onChange={event => setCountry(event.target.value)}/>
+                                onChange={event => setCountry(event.target.value)}
+                                onBlur={validateCountry}/>
+
                                 <CityHolder>
                                     <Input type="text" placeholder="City" value = {city} 
                                     name = {city}
-                                    onChange={event => setCity(event.target.value)}/>
+                                    onChange={event => setCity(event.target.value)} onBlur={validateCity}/>
+                                    
                                     <Input type="text" placeholder="Postal Code" value = {postalCode} 
                                     name = { postalCode}
-                                    onChange={event => setPopstalCode(event.target.value)}/>
+                                    onChange={event => setPopstalCode(event.target.value)}
+                                    onBlur={validatePostalCode}/>
                                 </CityHolder>
-                                <Input type="text" placeholder="Street adress" value = {streetAdress} 
-                                name = { streetAdress}
-                                onChange={event => setStreetAddress(event.target.value)}/>
 
-                                <Button block black 
+                                <Input type="text" placeholder="Street adress" value = {streetAddress} 
+                                name = { streetAddress}
+                                onChange={event => setStreetAddress(event.target.value)}
+                                onBlur={validateStreetAddress}/>
+
+                                {/* <Button block black 
                                 onClick={goToPayment}>
                                     Continue to payment
-                                </Button>
+                                </Button> */}
+                                <div style={{ marginBottom: '10px', marginTop: '10px' }}>
+                                    <Button black block onClick={goToPayment}>
+                                        Checkout with Paypal
+                                    </Button>
+                                </div>
+                                <div style={{ marginBottom: '10px' }}>
+                                    <Button black block onClick={goToPayment}>
+                                        Checkout with Gcash
+                                    </Button>
+                                </div>
+                                <div style={{ marginBottom: '10px' }}>
+                                    <Button black block onClick={goToCOD}>
+                                        Cash on Delivery
+                                    </Button>
+                                </div>
 
                             
                         </Box>
@@ -232,6 +396,7 @@ export default function CartPage() {
                     
                 </ColumnsWarapper>
             </Center>
+            <ToastContainer />
             <Footer/>
             
         </>

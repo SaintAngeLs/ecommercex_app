@@ -20,7 +20,7 @@ export default async function handler(req, res){
       return;
     }
   
-    // Handle the event
+    // Handle the event in the local tesing 
     switch (event.type) {
       case 'checkout.session.completed':
         const data = event.data.object;

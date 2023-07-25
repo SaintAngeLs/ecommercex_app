@@ -29,6 +29,7 @@
     "react-dom": "18.2.0",
     "react-id-swiper": "^4.0.0",
     "react-spinners": "^0.13.8",
+    "react-toastify": "^9.1.3",
     "spinner": "^0.3.4",
     "stripe": "^12.8.0",
     "stripe-cli": "^0.1.0",

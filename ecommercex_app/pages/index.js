@@ -39,11 +39,11 @@ export default function Home({ featuredProduct, newProducts, wishedNewProducts }
 }
 
 export async function getServerSideProps(categoryx) {
-  const featuredProductId = '64a853129268e294d796a570';
+  //const featuredProductId = '64a853129268e294d796a570';
   await mongooseConnect();
   
-  // const featuredProductSetting = await Setting.findOne({name:'64a853129268e294d796a570'});
-  // const featuredProductId = featuredProductSetting.value;
+  const featuredProductSetting = await Setting.findOne({name:'featuredProductId'});
+  const featuredProductId = featuredProductSetting.value;
   const featuredProduct = await Product.findById(featuredProductId);
   console.log("featuredProduct: ", featuredProduct._id);
   const newProducts = await Product.find({}, null, { sort: { '_id': -1 }, limit: 10 });
