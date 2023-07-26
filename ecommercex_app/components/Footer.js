@@ -2,12 +2,23 @@ import Link from "next/link";
 import styled from "styled-components";
 import { SocialNetworks, FooterSection } from './FooterComponents';
 
+
+const PageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 10vh;
+`;
+
 const StyledFooter = styled.footer`
+
+  bottom: 0;
+  width: 100%;
   margin-top: 50px;
   background-color: #222;
   color: #fff;
   padding: 20px;
   text-align: center;
+
 
   
   @media screen and (min-width: 576px) {
@@ -80,6 +91,8 @@ const FooterBottom = styled.div`
 
 export default function Footer() {
   return (
+    <PageWrapper>
+    
     <StyledFooter>
       <FooterTop>
         <div>
@@ -136,6 +149,8 @@ export default function Footer() {
         </div>
       </FooterBottom>
     </StyledFooter>
+      
+    </PageWrapper>
   );
 };
 
