@@ -4,6 +4,7 @@ import Googleimage from "@/components/GoogleImage";
 import Header from "@/components/Header";
 import Input from "@/components/Input";
 import ProductBox from "@/components/ProductBox";
+import SingleOrder from "@/components/SingleOrder";
 import Spinner from "@/components/Spinner";
 import Tabs from "@/components/Tabs";
 import WhiteBox from "@/components/WhiteBox";

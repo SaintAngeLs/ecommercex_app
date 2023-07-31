@@ -12,6 +12,7 @@ import AllProducts from "./icons/AllProductsIcon";
 import CategoriesIcon from "./icons/CategoriesIcon";
 import UserIcon from "./icons/UserIcon";
 import PartnershipIcon from "./icons/PartnershipIcon";
+import SearchIcon from "./icons/SearchIcon";
 
 const StyledHeader = styled.header`
     background-color: #222;
@@ -213,15 +214,22 @@ export default function Header() {
                         </NavigationLinkContainer>
                         </NavigationLink>
                     <NavigationLink href={'/cart'}>
-                    <NavigationLinkContainer>
-                        <IconWrapper>
-                            <CartIcon/>
-                        </IconWrapper>
-                        <span>Cart</span>
-                        <span>({cartProducts.length})</span>
-                    </NavigationLinkContainer>
+                        <NavigationLinkContainer>
+                            <IconWrapper>
+                                <CartIcon/>
+                            </IconWrapper>
+                            <span>Cart</span>
+                            <span>({cartProducts.length})</span>
+                        </NavigationLinkContainer>
                     </NavigationLink>
                     </StyledMavigation>
+                    <NavigationLink href={'/search'}>
+                        <NavigationLinkContainer>
+                            <IconWrapper>
+                                <SearchIcon/>
+                            </IconWrapper>
+                        </NavigationLinkContainer>
+                    </NavigationLink>
                     <NavButton onClick= {() => setMobileNavActive(previous => !previous)}> 
                         <BarsIcon/>
                     </NavButton>

@@ -131,8 +131,8 @@ export default function Footer() {
           <FooterSection
             title="Contact"
             links={[
-              { href: '#', text: 'store@uikit.com' },
-              { href: '#', text: 'Hotline: +1 131 138 138' },
+              { href: '#', text: 'the_site_of_the_store@mail.com' },
+              { href: '#', text: 'Hotline: +1 123 234 567' },
             ]}
           />
         </FooterContent>
@@ -141,7 +141,7 @@ export default function Footer() {
       <FooterBottom>
         <p>
           &copy; {new Date().getFullYear()} Ecommerce. All rights reserved. DESIGN
-          BY ICEO.CO - © 2019.
+          BY A.V. 2023.
         </p>
         <div>
           <FooterLink href="/privacy-policy">Privacy Policy</FooterLink>
