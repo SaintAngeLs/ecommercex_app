@@ -61,7 +61,9 @@ export default function PeodutPage({product}) {
                                 onClick={() => addProduct(product._id)}><CartIcon/>Add to cart</Button>
                             </div>
                         </PriceRow>
+
                         <ProductReviews product={product}/>
+                        
                     </div>
                 </ColWrapper>
             </Center>
