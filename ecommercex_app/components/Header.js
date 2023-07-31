@@ -182,15 +182,17 @@ export default function Header() {
                         </NavigationLinkContainer>
                     </NavigationLink>
                     <DropdownContainer>
-                        <DropdownToggle onClick={toggleDropdown}>
+                        
                             <NavigationLinkContainer> 
+                            <DropdownToggle onClick={toggleDropdown}>
                                 <IconWrapper>
                                     <PartnershipIcon />  
                                 </IconWrapper>
                                 Partnerships
+                                </DropdownToggle>
                             </NavigationLinkContainer> 
-                        </DropdownToggle>
-                        <div classname="flex.items-center">
+                        
+                        <div className="flex items-center">
                             <DropdownMenu open={dropdownOpen}>
                                 <DropdownItem>
                                     <NavigationLink href="#">Artist 1</NavigationLink>

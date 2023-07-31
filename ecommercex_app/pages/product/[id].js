@@ -4,6 +4,7 @@ import Center from "@/components/Center";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ProductImges from "@/components/ProductImages";
+import ProductReviews from "@/components/ProductsReview";
 import Title from "@/components/Title";
 import WhiteBox from "@/components/WhiteBox";
 import CartIcon from "@/components/icons/CartIcon";
@@ -60,6 +61,7 @@ export default function PeodutPage({product}) {
                                 onClick={() => addProduct(product._id)}><CartIcon/>Add to cart</Button>
                             </div>
                         </PriceRow>
+                        <ProductReviews product={product}/>
                     </div>
                 </ColWrapper>
             </Center>

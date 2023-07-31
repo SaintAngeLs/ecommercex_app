@@ -2,7 +2,8 @@ import StarOutline from "@/components/icons/StarOutline";
 import styled from "styled-components";
 import {useState} from "react";
 import StarSolid from "@/components/icons/StarSolid";
-import {primary} from "@/lib/colors";
+import { primary } from "@/lib/Colors";
+
 
 const StarsWrapper = styled.div`
   display: inline-flex;

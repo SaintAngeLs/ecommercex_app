@@ -94,6 +94,7 @@ export default function CartPage() {
     const [streetAddressError, setStreetAddressError] = useState("");
     const [countryError, setCountryError] = useState("");
     const [history] = useState("");
+    const [shippingFee, setShippingFee] = useState(null);
 
     useEffect(() => {
         if(cartProducts.length > 0)
@@ -191,22 +192,25 @@ export default function CartPage() {
             setSuccess(true);
             clearCart();
         }
+        axios.get('/api/settings?name=shippingFee').then(res => {
+            setShippingFee(res.data.value);
+        })
     }, [])
 
-    // useEffect(() => {
-    //     if(!session)
-    //     {
-    //         return;
-    //     }
-    //     axios.get('/api/address').then(response => {
-    //         setName(response.data?.name);
-    //         setEmail(response.data?.email);
-    //         setCity(response.data?.city);
-    //         setPopstalCode(response.data?.postalCode);
-    //         setStreetAddress(response.data?.streetAddress);
-    //         setCountry(response.data?.country);
-    //     }, [session]);
-    // })
+    useEffect(() => {
+        if(!session)
+        {
+            return;
+        }
+        axios.get('/api/address').then(response => {
+            setName(response.data?.name);
+            setEmail(response.data?.email);
+            setCity(response.data?.city);
+            setPopstalCode(response.data?.postalCode);
+            setStreetAddress(response.data?.streetAddress);
+            setCountry(response.data?.country);
+        }, [session]);
+    })
     
     // inputs validation
     const validateName = () => {
@@ -326,9 +330,18 @@ export default function CartPage() {
                                         </tr>
                                     ))}
                                     <tr>
-                                        <td></td>
-                                        <td>Total: </td>
+                                    <tr className="subtotal">
+                                        <td colSpan={2}>Subtotal</td>
                                         <td>${total}</td>
+                                    </tr>
+                                    <tr className="subtotal">
+                                        <td colSpan={2}>Shipping</td>
+                                        <td>${shippingFee}</td>
+                                    </tr>
+                                    <tr className="subtotal total">
+                                        <td colSpan={2}>Total (VAT Included)</td>
+                                        <td>${total + parseInt(shippingFee || 0)}</td>
+                                    </tr>
                                     </tr>
                                 </tbody>
                             </Table>
