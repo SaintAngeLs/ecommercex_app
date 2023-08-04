@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTruck, faPeopleArrows, faHandHoldingDollar } from '@fortawesome/free-solid-svg-icons';
 
 const ShopDataStyled = styled.div`
+  //z-index: 1000;
   bottom: 0;
   left: 0;
   width: 60%;

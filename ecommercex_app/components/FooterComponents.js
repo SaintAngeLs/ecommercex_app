@@ -7,11 +7,11 @@ const SocialNetworksList = styled.ul`
 `;
 
 const SocialNetworkItem = styled.li`
-  margin-right: 15px;
+  margin-right: 5px;
 `;
 
 const SocialNetworkLink = styled.a`
-  color: #fff;
+  color: #222;
 `;
 
 const FooterList = styled.ul`
@@ -25,20 +25,18 @@ const FooterListItem = styled.li`
 `;
 
 const FooterLink = styled.a`
-  color: #fff;
+  color: #222;
+  white-space: nowrap;
 `;
 
 const FooterSectionStyled = styled.div`
-  margin: 20px;
+  margin-right: 2px;
   @media screen and (max-width: 576px) {
     margin: 5px;
   }
 `;
 
-const FooterContent = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
+
 
 const SocialNetworks = () => {
   return (
@@ -77,4 +75,4 @@ const FooterSection = ({ title, links }) => {
   );
 };
 
-export { SocialNetworks, FooterSection, FooterContent };
+export { SocialNetworks, FooterSection };

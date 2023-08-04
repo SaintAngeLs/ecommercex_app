@@ -58,8 +58,8 @@ const SubscribeH4 = styled.h4`
 const SubscribeForm = styled.form`
   display: flex;
   padding: 10px;
-  justify-content: flex-end;
-  flex-wrap: wrap;
+  //justify-content: flex-end;
+  //flex-wrap: wrap;
 `;
 
 const SubscribeInput = styled.input`
@@ -103,7 +103,7 @@ export default function Subscribe() {
 
             <SubscribeForm>
               <SubscribeInput type="email" placeholder="Email address" />
-              <Button type="white4" size="l">Subscribe</Button>
+              <Button type="white" size="m">Subscribe</Button>
             </SubscribeForm>
           </SubscribeContent>
         </div>

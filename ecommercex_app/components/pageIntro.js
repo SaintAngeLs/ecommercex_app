@@ -171,10 +171,10 @@ const PageIntro = () => {
           </Slide>
         </SwiperSlide>
         <SwiperNavButtons/>
-        
+        <ShopData/>
       </Swiper>
       
-      <ShopData/>
+      
     </section>
   );
 };

@@ -1,26 +1,25 @@
 import Link from "next/link";
 import styled from "styled-components";
+import {devices} from '../styles/breacpoints'
 import { SocialNetworks, FooterSection } from './FooterComponents';
+import Center from "./Center";
 
 
 const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 10vh;
+  min-height: 20vh;
 `;
 
 const StyledFooter = styled.footer`
-
   bottom: 0;
   width: 100%;
   margin-top: 50px;
-  background-color: #222;
-  color: #fff;
-  padding: 20px;
+  background-color: #EEEEEE;
+  color: #222;
+  padding: 10px;
   text-align: center;
 
-
-  
   @media screen and (min-width: 576px) {
     padding: 40px;
   }
@@ -32,8 +31,13 @@ const StyledFooter = styled.footer`
 
 const FooterContent = styled.div`
   display: grid;
+  
+  font-size: 12px;
+  //justify-content: flex-end;
+  flex-direction: row;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 5px;
+  align-items: start;
   
   @media screen and (max-width: 576px) {
     grid-template-columns: repeat(1, 1fr);
@@ -48,6 +52,7 @@ const FooterLink = styled(Link)`
   color: #fff;
   text-decoration: none;
   transition: color 0.3s ease-in-out;
+  white-space: nowrap; 
 
   &:hover {
     color: #b2b2b2;
@@ -57,13 +62,16 @@ const FooterLink = styled(Link)`
 
 const FooterTop = styled.div`
   display: grid;
-  gap: 10px;
-  font-size: 14px;
+  grid-template-columns: 5fr repeat(3, 1fr);
+  gap: 5px;
+  align-items: start; // align the grid items to start
+  
+  @media screen and (max-width: 576px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 
   @media screen and (min-width: 768px) {
-    grid-template-columns: 1fr 1fr;
-    gap: 5px;
-    font-size: 11px;
+    grid-template-columns: 5fr repeat(3, 1fr);
   }
 `;
 
@@ -91,10 +99,14 @@ const FooterBottom = styled.div`
 
 export default function Footer() {
   return (
+    <Center>
+
+    
     <PageWrapper>
     
     <StyledFooter>
       <FooterTop>
+        
         <div>
           <h6>
             
@@ -106,7 +118,7 @@ export default function Footer() {
           </p>
           <SocialNetworks />
         </div>
-
+      
         <FooterContent>
           <FooterSection
             title="Shopping online"
@@ -151,6 +163,7 @@ export default function Footer() {
     </StyledFooter>
       
     </PageWrapper>
+    </Center>
   );
 };
 
