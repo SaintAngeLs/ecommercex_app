@@ -6,11 +6,15 @@ import Button from "./Button";
 const SubscriptionStyled = styled.section`
     margin-top: 2rem;
     margin-bottom: 2rem;
+    width: 100%;
+    position: relative;
+    background-color: #222;
+
 `;
 
 const SubscribeContent = styled.div`
   padding: 35px 20px;
-  background-color: #FAFAFA;
+  background-color: #222;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;

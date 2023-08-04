@@ -11,7 +11,7 @@ const SocialNetworkItem = styled.li`
 `;
 
 const SocialNetworkLink = styled.a`
-  color: #222;
+  color: #eee;
 `;
 
 const FooterList = styled.ul`
@@ -25,7 +25,7 @@ const FooterListItem = styled.li`
 `;
 
 const FooterLink = styled.a`
-  color: #222;
+  color: #eee;
   white-space: nowrap;
 `;
 

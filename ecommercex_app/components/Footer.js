@@ -6,27 +6,29 @@ import Center from "./Center";
 
 
 const PageWrapper = styled.div`
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   min-height: 20vh;
+  background-color: #222;
 `;
 
 const StyledFooter = styled.footer`
   bottom: 0;
   width: 100%;
   margin-top: 50px;
-  background-color: #EEEEEE;
-  color: #222;
-  padding: 10px;
+  
+  color: #EEE;
+  //padding: 10px;
   text-align: center;
 
-  @media screen and (min-width: 576px) {
+  /* @media screen and (min-width: 576px) {
     padding: 40px;
   }
 
   @media screen and (min-width: 768px) {
     padding: 60px;
-  }
+  } */
 `;
 
 const FooterContent = styled.div`
@@ -49,7 +51,7 @@ const FooterContent = styled.div`
 `;
 
 const FooterLink = styled(Link)`
-  color: #fff;
+  color: #EEE;
   text-decoration: none;
   transition: color 0.3s ease-in-out;
   white-space: nowrap; 
@@ -77,7 +79,7 @@ const FooterTop = styled.div`
 
 const FooterBottom = styled.div`
   padding: 20px 0;
-  border-top: 1px solid #EBEBEB;
+  border-top: 1px solid #EEE;
   text-align: center;
   font-size: 14px;
 
@@ -99,11 +101,11 @@ const FooterBottom = styled.div`
 
 export default function Footer() {
   return (
-    <Center>
+    
 
     
     <PageWrapper>
-    
+    <Center>
     <StyledFooter>
       <FooterTop>
         
@@ -161,9 +163,9 @@ export default function Footer() {
         </div>
       </FooterBottom>
     </StyledFooter>
-      
+      </Center>
     </PageWrapper>
-    </Center>
+    
   );
 };
 
