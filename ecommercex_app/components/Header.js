@@ -18,6 +18,7 @@ const StyledHeader = styled.header`
     background-color: #222;
     font-weight: 500;
     position: relative;
+    font-size: 12px;
 `;
 const Logo = styled(Link)`
     color: #fff;
@@ -31,6 +32,7 @@ const Wrapper = styled.div`
     justify-content: space-between;
     padding: 25px 0;
     align-items: center;
+    
 `;
 
 const StyledMavigation = styled.nav`
@@ -92,8 +94,9 @@ const NavButton = styled.button`
     }
 `;
 const IconWrapper = styled.div`
-  width: 24px; // Set to your preferred width
-  height: 24px; // Set to your preferred height
+  width: 20px; 
+  height: 20px; 
+  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,11 +104,15 @@ const IconWrapper = styled.div`
 
 const DropdownContainer = styled.div`
   position: relative;
-  display: inline-block;
+  
+  
+  //display: inline-block;
+  
 `;
 
 const DropdownToggle = styled.button`
   display: block;
+  font-size: 12px;
   color: #aaa;
   text-decoration: none;
   min-width: 30px;
@@ -113,17 +120,19 @@ const DropdownToggle = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 16px; /* Adjust the font size as desired */
+  
   svg {
     height: 20px;
   }
   @media screen and (min-width: 768px) {
     padding: 0;
+    
   }
 `;
 
 const DropdownMenu = styled.ul`
   position: absolute;
+  
   top: 100%;
   left: 0;
   display: ${(props) => (props.open ? "block" : "none")};
@@ -181,16 +190,20 @@ export default function Header() {
                             Categories
                         </NavigationLinkContainer>
                     </NavigationLink>
+                    
                     <DropdownContainer>
                         
-                            <NavigationLinkContainer> 
-                            <DropdownToggle onClick={toggleDropdown}>
+                        
+                             
+                        <DropdownToggle onClick={toggleDropdown}>
+                            <NavigationLinkContainer>
                                 <IconWrapper>
                                     <PartnershipIcon />  
                                 </IconWrapper>
                                 Partnerships
-                                </DropdownToggle>
-                            </NavigationLinkContainer> 
+                                </NavigationLinkContainer> 
+                        </DropdownToggle>
+                            
                         
                         <div className="flex items-center">
                             <DropdownMenu open={dropdownOpen}>
@@ -206,6 +219,7 @@ export default function Header() {
                             </DropdownMenu>
                         </div>
                     </DropdownContainer>
+                   
 
                     <NavigationLink href={'/account'}>
                         <NavigationLinkContainer>

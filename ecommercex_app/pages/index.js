@@ -13,6 +13,7 @@ import { WishedProduct } from '@/models/WishedProduct'
 import { authOptions } from './api/auth/[...nextauth]'
 import { Setting } from '@/models/Setting'
 import { getServerSession } from 'next-auth'
+import Subscribe from '@/components/Subscribe'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -32,7 +33,7 @@ export default function Home({ featuredProduct, newProducts, wishedNewProducts }
       {newProducts && (
         <NewProducts products={newProducts} wishedProducts={wishedNewProducts}/>
       )}
-
+      <Subscribe/>
       <Footer />
     </div>
   );
