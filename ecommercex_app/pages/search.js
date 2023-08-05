@@ -6,9 +6,10 @@ import Input from "../components/Input";
 import axios from "axios";
 import ProductsGrid from "@/components/ProductsGrid";
 import Footer from "@/components/Footer";
+import Featured from "@/components/Featured";
 
 const SearchInput = styled(Input)`
-    margin-top: 10px;
+    margin-top: 10rem;
     padding: 5px 10px;
     border-radius: 5px;
     margin-top: 20px 0 30px;
@@ -51,6 +52,8 @@ export default function SearchPage() {
                  placeholder="Search for products..." />
                  <ProductsGridFlex products={products} />
             </CenterFlex>
+
+            
             <Footer/>
         </>
     )

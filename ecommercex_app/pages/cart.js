@@ -13,6 +13,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 import styled from "styled-components";
 
+const CartWrapper = styled.div`
+    margin-top: 10rem;
+`;
 
 const ColumnsWarapper = styled.div`
     display: grid;
@@ -271,14 +274,16 @@ export default function CartPage() {
         return(
             <>
                 <Header/>
-                <Center>
-                    <ColumnsWarapper>
-                        <Box>
-                            <h1>Thanks for your order</h1>
-                            <p>We will get in touch with you soon!</p>
-                        </Box>
-                    </ColumnsWarapper>
-                </Center>
+                <CartWrapper>
+                    <Center>
+                        <ColumnsWarapper>
+                            <Box>
+                                <h1>Thanks for your order</h1>
+                                <p>We will get in touch with you soon!</p>
+                            </Box>
+                        </ColumnsWarapper>
+                    </Center>
+                </CartWrapper>
                 <Footer/>
             </>
         );
@@ -286,6 +291,7 @@ export default function CartPage() {
     return (
         <>
             <Header/>
+            <CartWrapper>
             <Center>
                 <ColumnsWarapper>
                     <Box>
@@ -409,6 +415,7 @@ export default function CartPage() {
                     
                 </ColumnsWarapper>
             </Center>
+            </CartWrapper>
             <ToastContainer />
             <Footer/>
             

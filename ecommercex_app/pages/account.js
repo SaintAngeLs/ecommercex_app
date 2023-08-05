@@ -14,14 +14,18 @@ import { RevealWrapper } from "next-reveal";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
+const StyledAccountPage = styled.div`
+    margin-top: 10rem;
+`;
 const ColsWrapper = styled.div`
-  display:grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap: 40px;
-  margin: 40px 0;
-  p{
-    margin:5px;
-  }
+    
+    display:grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 40px;
+    margin: 40px 0;
+    p{
+        margin:5px;
+    }
 `;
 
 const CityHolder = styled.div`
@@ -110,6 +114,7 @@ export default function AccountPage(){
     return (
         <>
         <Header/>
+        <StyledAccountPage>
         <Center>
             <ColsWrapper>
             <div>
@@ -226,6 +231,7 @@ export default function AccountPage(){
             </div>
             </ColsWrapper>
         </Center>
+        </StyledAccountPage>
         </>
     );
 };

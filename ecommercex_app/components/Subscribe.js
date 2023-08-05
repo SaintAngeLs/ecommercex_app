@@ -4,14 +4,28 @@ import Center from "./Center";
 import Button from "./Button";
 
 import { useState } from "react";
+import { RevealWrapper } from "next-reveal";
 
-const SubscriptionStyled = styled.section`
+
+const SybscriptionWrapper = styled.div`
     margin-top: 2rem;
     margin-bottom: 2rem;
-    width: 100%;
+`;
+const SubscriptionStyled = styled.section`
+
+    width: 80%;
     position: relative;
     background-color: #222;
-
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column; 
+    @media screen and (min-width: ${device.tablet}) {
+      display: flex; 
+      flex-direction: row;
+  }
+    
 `;
 
 const SubscribeContent = styled.div`
@@ -21,13 +35,18 @@ const SubscribeContent = styled.div`
   background-size: cover;
   position: relative;
   background-position: center;
-  @media ${device.phone} {
-    padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: ${device.phone}) {
+    padding: 40px 60px 40px 60px;
+    
   }
-  @media ${device.tabletLg} {
+  @media screen and (min-width: ${device.tablet}) {
     padding: 80px 125px 80px 105px;
-    display: flex;
-    align-items: center;
+    flex-direction: row;
+    //justify-content: space-between;
+    
   }
   &:before {
     content: '';
@@ -54,7 +73,7 @@ const SubscribeH4 = styled.h4`
   @media ${device.phone} {
     font-size: 23px;
   }
-  @media ${device.tabletLg} {
+  @media screen and (min-width: ${device.tablet}) {
     width: 504px;
     font-size: 26px;
     margin-bottom: 0;
@@ -62,14 +81,21 @@ const SubscribeH4 = styled.h4`
 `;
 
 const SubscribeForm = styled.form`
-  display: flex;
   padding: 10px;
-  //justify-content: flex-end;
-  //flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  @media screen and (min-width: ${device.tablet}) {
+    width: auto;
+    height: 48px;
+    padding: 0 10px;
+    flex-direction: row; // add this
+    //align-items: stretch; // add this
+  }
 `;
 
 const SubscribeInput = styled.input`
-  width: 100%;
+  width: 80%;
   height: 40px;
   padding: 0 25px;
   color: #ABABAB;
@@ -78,10 +104,10 @@ const SubscribeInput = styled.input`
   border-radius: 30px;
   margin-right: 5px;
   margin-bottom: 5px;
-  @media ${device.phone} {
+  @media screen and (min-width: ${device.phone}) {
     width: auto;
     height: 48px;
-    padding: 0 35px;
+    padding: 0 10px;
   }
 `;
 
@@ -90,7 +116,7 @@ const SubscribeButton = styled.button`
   font-size: 11px;
   padding-top: 10px;
   padding-bottom: 10px;
-  @media ${device.phone} {
+  @media screen and (min-width: ${device.phone}) {
     padding: 15px 25px;
     font-size: 13px;
     margin-top: 0;
@@ -124,9 +150,11 @@ export default function Subscribe() {
     };
 
     return (
+      <RevealWrapper delay={500}>
+      <SybscriptionWrapper>
         <Center>
         <SubscriptionStyled>
-            <div className="container">
+           
             <SubscribeContent style={{backgroundImage: 'url(/images/subscribe.jpg)'}}>
                 <SubscribeH4>
                 Subscribe to our newsletter and receive exclusive offers every week
@@ -144,8 +172,10 @@ export default function Subscribe() {
                 <Button type="white" size="m">Subscribe</Button>
                 </SubscribeForm>
             </SubscribeContent>
-            </div>
+            
         </SubscriptionStyled>
         </Center>
+        </SybscriptionWrapper>
+        </RevealWrapper>
     );
 }

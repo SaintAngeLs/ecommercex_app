@@ -13,6 +13,10 @@ import { Product } from "@/models/Product";
 import { useContext } from "react";
 import styled from "styled-components";
 
+const ProductWrapper = styled.div`
+    margin-top: 10rem;
+`;
+
 const ColWrapper = styled.div`
     display: grid;
     grid-template-columns: 1fr;
@@ -40,6 +44,7 @@ export default function PeodutPage({product}) {
     return(
         <>
             <Header/>
+            <ProductWrapper>
             <Center>
                 <ColWrapper>
                     <WhiteBox>
@@ -67,6 +72,7 @@ export default function PeodutPage({product}) {
                     </div>
                 </ColWrapper>
             </Center>
+            </ProductWrapper>
             <Footer/>
         </>
     );

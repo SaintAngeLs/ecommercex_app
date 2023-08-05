@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import SwiperNavButtons from './SwiperNavButtons';
 import ShopData from './ShopData';
+import Link from 'next/link';
 
 
 SwiperCore.use([EffectFade, Navigation]);
@@ -103,7 +104,7 @@ const Icon = styled.i`
 `;
 
 
-const ShopButton = styled.a`
+const ShopButton = styled(Link)`
   display: flex;
   color: #fff;
   align-items: center;
@@ -150,7 +151,7 @@ const PageIntro = () => {
             <Container>
               <SlideContent>
                 <Title>Sale of the summer collection</Title>
-                <ShopButton href="#">
+                <ShopButton href="/products">
                     <Icon className="icon-right"><FontAwesomeIcon icon={faArrowRight} /></Icon>Shop now
                 </ShopButton>
               </SlideContent>
@@ -163,7 +164,7 @@ const PageIntro = () => {
             <Container>
               <SlideContent>
                 <Title>Make your house into a home</Title>
-                <ShopButton href="#">
+                <ShopButton href="/products">
                   <Icon className="icon-right"><FontAwesomeIcon icon={faArrowRight} /></Icon>Shop now
                 </ShopButton>
               </SlideContent>

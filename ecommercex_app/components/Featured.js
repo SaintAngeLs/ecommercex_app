@@ -5,6 +5,7 @@ import ButtonLink from "./ButtonLink";
 import CartIcon from "./icons/CartIcon";
 import { createContext, useContext } from "react";
 import { CartContext } from "./CartContext";
+import { RevealWrapper } from "next-reveal";
 
 const BG = styled.div`
     background-color: #222;
@@ -69,6 +70,7 @@ export default function Featured({product}) {
     }
     console.log("FFFFF the product id in the featured:", product)
     return(
+        <RevealWrapper key={product._id} delay={500}>
         <BG>
             <Center>
                 <ColumnsWrapper>
@@ -97,5 +99,6 @@ export default function Featured({product}) {
             </Center>
             
         </BG>
+        </RevealWrapper>
     )
 }

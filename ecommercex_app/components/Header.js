@@ -48,6 +48,7 @@ const Wrapper = styled.div`
     
 `;
 
+
 const StyledMavigation = styled.nav`
     display: ${props => props.mobileNavActive ? 'block' : 'none'};
 
@@ -74,10 +75,12 @@ const NavigationLink = styled(Link)`
     text-decoration: none;
     padding: 10px;
     min-width: 100px; 
-    margin-left: px;
+    margin-left: 0px;
+    
 
-    @media screen  and (min-width: 768px){
+    @media screen  and (max-width: 768px){
         padding: 0;
+        margin-left: 100px;
     }
 `;
 
@@ -87,7 +90,7 @@ const NavigationLinkContainer = styled.div`
     align-items: center;
     width: 100%;
     @media screen  and (max-width: 768px){
-        max-width: 40%;
+        max-width: 100%;
     }
 `;
 
@@ -100,7 +103,7 @@ const NavButton = styled.button`
     position: relative;
     z-index: 1000;
     cursor: pointer;
-    @media screen  and (min-width: 768px){
+    @media screen  and (M-width: 768px){
         display: none;
         position: static;
         padding: 0;
@@ -144,7 +147,7 @@ const DropdownToggle = styled.button`
 `;
 
 const DropdownMenu = styled.ul`
-  position: absolute;
+  position: relative;
   
   top: 100%;
   left: 0;
@@ -226,7 +229,7 @@ export default function Header({ isErrorPage }) {
                         </NavigationLinkContainer>
                     </NavigationLink>
                     
-                    <DropdownContainer>
+                    {/* <DropdownContainer>
                         
                         
                              
@@ -254,7 +257,7 @@ export default function Header({ isErrorPage }) {
                             </DropdownMenu>
                         </div>
                     </DropdownContainer>
-                   
+                    */}
 
                     <NavigationLink href={'/account'}>
                         <NavigationLinkContainer>
