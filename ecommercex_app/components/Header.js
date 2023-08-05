@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 import Center from "./Center";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "./CartContext";
 
 
@@ -13,12 +13,25 @@ import CategoriesIcon from "./icons/CategoriesIcon";
 import UserIcon from "./icons/UserIcon";
 import PartnershipIcon from "./icons/PartnershipIcon";
 import SearchIcon from "./icons/SearchIcon";
+import { useRouter } from "next/router";
 
 const StyledHeader = styled.header`
     background-color: #222;
     font-weight: 500;
+    display: block;
     position: relative;
     font-size: 12px;
+    z-index: 1000;
+    //margin-bottom: 100px;
+    
+
+    ${props => props.isNotOnTop && `
+        position: fixed;
+        top: 0;
+        margin-bottom: 100px;
+        left: 0;
+        right: 0;
+    `}
 `;
 const Logo = styled(Link)`
     color: #fff;
@@ -149,10 +162,12 @@ const DropdownItem = styled.li`
 
 
 
-export default function Header() {
+export default function Header({ isErrorPage }) {
     const {cartProducts} = useContext(CartContext)
     const [mobileNavActive, setMobileNavActive] = useState(false);
-
+    const router = useRouter();
+    const arrayPaths = ['/'];  
+    const [onTop, setOnTop] = useState(( !arrayPaths.includes(router.pathname) || isErrorPage ) ? false : true);
 
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -160,8 +175,28 @@ export default function Header() {
         setDropdownOpen(!dropdownOpen);
       };
 
+    const headerClass = () => {
+        if(window.pageYOffset === 0) {
+            setOnTop(true);
+        } else {
+            setOnTop(false);
+        }
+    }
+    
+    useEffect(() => {
+        if(!arrayPaths.includes(router.pathname) || isErrorPage) {
+          return;
+        }
+    
+        headerClass();
+        window.onscroll = function() {
+          headerClass();
+        };
+    }, []);
+    
+
     return (
-        <StyledHeader>
+        <StyledHeader isNotOnTop={!onTop}>
             <Center>
                 <Wrapper>
                     <Logo href = {'/'}>Ecommerce</Logo>

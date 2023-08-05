@@ -23,9 +23,9 @@ export default function Home({ featuredProduct, newProducts, wishedNewProducts }
       <Head>
         <title>Eccommerce</title>
       </Head>
+
       <Header />
 
-      
       <PageIntro />
       
       <Featured product={featuredProduct} />
@@ -33,7 +33,9 @@ export default function Home({ featuredProduct, newProducts, wishedNewProducts }
       {newProducts && (
         <NewProducts products={newProducts} wishedProducts={wishedNewProducts}/>
       )}
+
       <Subscribe/>
+      
       <Footer />
     </div>
   );

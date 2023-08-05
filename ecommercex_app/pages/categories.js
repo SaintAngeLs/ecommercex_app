@@ -10,8 +10,15 @@ import Link from "next/link";
 import ProductBox from "@/components/ProductBox";
 import { RevealWrapper } from "next-reveal";
 import { WishedProduct } from "@/models/WishedProduct";
+import Footer from "@/components/Footer";
 
+
+const MaintCategoryWrapper = styled.div`
+    margin-top: 8rem;
+    margin-bottom: 60px;
+`;
 const CategoryWrapper = styled.div`
+    //margin-top: 8rem;
     margin-bottom: 60px;
 `;
 
@@ -45,6 +52,7 @@ export default function CategoriesPage({mainCategories, categoriesProducts, wish
         <>
             <Header/>
             <Center>
+            <MaintCategoryWrapper>  
             {
                 mainCategories.map( category => (
                     <CategoryWrapper>
@@ -71,7 +79,9 @@ export default function CategoriesPage({mainCategories, categoriesProducts, wish
                     </CategoryWrapper>
                 ))
             }
+            </MaintCategoryWrapper> 
             </Center>
+            <Footer/>
         </>
     );
 };
