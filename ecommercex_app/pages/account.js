@@ -1,5 +1,6 @@
 import Button from "@/components/Button";
 import Center from "@/components/Center";
+import Footer from "@/components/Footer";
 import Googleimage from "@/components/GoogleImage";
 import Header from "@/components/Header";
 import Input from "@/components/Input";
@@ -232,6 +233,7 @@ export default function AccountPage(){
             </ColsWrapper>
         </Center>
         </StyledAccountPage>
+        <Footer/>
         </>
     );
 };

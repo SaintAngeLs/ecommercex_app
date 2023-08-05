@@ -11,8 +11,13 @@ import SwiperNavButtons from './SwiperNavButtons';
 import ShopData from './ShopData';
 import Link from 'next/link';
 
+import { motion } from "framer-motion";
+
 
 SwiperCore.use([EffectFade, Navigation]);
+
+
+
 
 const Slide = styled.div`
   height: 600px;
@@ -149,12 +154,14 @@ const PageIntro = () => {
         <SwiperSlide>
           <Slide bgImage="https://images.unsplash.com/photo-1584811644165-33db3b146db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80">
             <Container>
+              
               <SlideContent>
                 <Title>Sale of the summer collection</Title>
                 <ShopButton href="/products">
                     <Icon className="icon-right"><FontAwesomeIcon icon={faArrowRight} /></Icon>Shop now
                 </ShopButton>
               </SlideContent>
+              
             </Container>
           </Slide>
         </SwiperSlide>

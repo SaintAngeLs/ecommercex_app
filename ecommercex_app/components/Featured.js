@@ -70,8 +70,9 @@ export default function Featured({product}) {
     }
     console.log("FFFFF the product id in the featured:", product)
     return(
-        <RevealWrapper key={product._id} delay={500}>
+        
         <BG>
+            <RevealWrapper key={product._id} delay={500}>
             <Center>
                 <ColumnsWrapper>
                     <Column>
@@ -97,8 +98,8 @@ export default function Featured({product}) {
                 </ColumnsWrapper>
                 
             </Center>
-            
+            </RevealWrapper>
         </BG>
-        </RevealWrapper>
+        
     )
 }

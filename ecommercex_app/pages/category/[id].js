@@ -1,4 +1,5 @@
 import Center from "@/components/Center";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ProductsGrid from "@/components/ProductsGrid";
 import Spinner from "@/components/Spinner";
@@ -134,6 +135,7 @@ export default function CategoryPage({category, subCategories, products:original
             )}
             
             </Center>
+            <Footer/>
         </>
     );
 }

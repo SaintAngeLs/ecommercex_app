@@ -16,7 +16,7 @@ export default async function handle(req, res){
 
         if(whishedDocument)
         {
-            await WishedProduct.findBuIdAndDelete(whishedDocument._id);
+            await WishedProduct.findByIdAndDelete(whishedDocument._id);
             res.json({whishedDocument});
         }
         else
