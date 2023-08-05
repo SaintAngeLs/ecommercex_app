@@ -3,6 +3,8 @@ import {device} from '../styles/breacpoints';
 import Center from "./Center";
 import Button from "./Button";
 
+import { useState } from "react";
+
 const SubscriptionStyled = styled.section`
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -96,22 +98,54 @@ const SubscribeButton = styled.button`
 `;
 
 export default function Subscribe() {
-  return (
-    <Center>
-      <SubscriptionStyled>
-        <div className="container">
-          <SubscribeContent style={{backgroundImage: 'url(/images/subscribe.jpg)'}}>
-            <SubscribeH4>
-              Subscribe to our newsletter and receive exclusive offers every week
-            </SubscribeH4>
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState(''); // add this line
 
-            <SubscribeForm>
-              <SubscribeInput type="email" placeholder="Email address" />
-              <Button type="white" size="m">Subscribe</Button>
-            </SubscribeForm>
-          </SubscribeContent>
-        </div>
+    const handleSubmit = async (e) => {
+        e.preventDefault();  // prevent page from refreshing when form is submitted
+    
+        // make a POST request to the /api/subscribe route
+        const response = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: email }),
+        });
+    
+        if (response.ok) {
+          // handle success - clear the form, show a success message, etc.
+          setMessage('Subscription successful'); // update the message
+          setEmail('');  // clear the form
+        } else {
+          // handle error - show an error message, etc.
+          setMessage('Subscription failed'); // update the message
+        }
+    };
+
+    return (
+        <Center>
+        <SubscriptionStyled>
+            <div className="container">
+            <SubscribeContent style={{backgroundImage: 'url(/images/subscribe.jpg)'}}>
+                <SubscribeH4>
+                Subscribe to our newsletter and receive exclusive offers every week
+                </SubscribeH4>
+
+                {/* Display the message */}
+                <p>{message}</p>
+
+                <SubscribeForm onSubmit={handleSubmit}>
+                <SubscribeInput 
+                    type="email"
+                    placeholder="Email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}/>
+                <Button type="white" size="m">Subscribe</Button>
+                </SubscribeForm>
+            </SubscribeContent>
+            </div>
         </SubscriptionStyled>
-    </Center>
-  );
+        </Center>
+    );
 }
