@@ -1,6 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
+import Slider from "react-slick";
 
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
+//import Swiper from 'react-id-swiper';
 
 const Image = styled.img`
     max-width: 100%;
@@ -40,14 +45,70 @@ const ImageButton = styled.div`
     border-radius: 5px;
 
 `;
+
+const SwiperModal = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+`;
+
+const CloseButton = styled.button`
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 28px;
+`;
+
 export default function ProductImges({images}) {
     
     const [activeImage, setActiveImage] = useState(images?.[0]);
+    const [showSwiper, setShowSwiper] = useState(false);
+
+    const sliderSettings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true
+      };
+
+    
+
     return(
         <>
-            <BigImageWrapper>
+        
+            <BigImageWrapper onClick={() => setShowSwiper(true)}>
                 <BigImage src={activeImage}/>
             </BigImageWrapper>
+
+            {showSwiper && (
+                <SwiperModal>
+                    <CloseButton onClick={() => setShowSwiper(false)}>&times;</CloseButton>
+                    <Slider {...sliderSettings}>
+                        {images.map(image => (
+                            <div key={image._id}>
+                                <Image src={image}/>
+                            </div>
+                        ))}
+                    </Slider>
+                </SwiperModal>
+            )}
             
             <ImageButtons>
                 {images.map(image => (

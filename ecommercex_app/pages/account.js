@@ -57,6 +57,14 @@ export default function AccountPage(){
     const [isEditing, setIsEditing] = useState(false); // Added state for tracking editing mode
 
 
+    const countries = [
+        "Afghanistan",
+        "Albania",
+        "Algeria",
+        "Andorra",
+        // ... add more countries as needed
+    ];
+    
     async function logout() {
         await signOut({
         callbackUrl: process.env.NEXT_PUBLIC_URL,

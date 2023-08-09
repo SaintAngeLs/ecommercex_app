@@ -51,8 +51,7 @@ export default function PeodutPage({product}) {
                         <ProductImges images = {product.images}/>
                     </WhiteBox>
                     <div>
-                        {console.log("=====================================")}
-    {console.log("ID in the [id].js:", product._id)}
+                        
                         <Title>{product.title}</Title>
                         <p>{product.description}</p>
                         <PriceRow>
