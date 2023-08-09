@@ -9,6 +9,7 @@ import SingleOrder from "@/components/SingleOrder";
 import Spinner from "@/components/Spinner";
 import Tabs from "@/components/Tabs";
 import WhiteBox from "@/components/WhiteBox";
+
 import axios from "axios";
 import {signIn, signOut, useSession} from "next-auth/react";
 import { RevealWrapper } from "next-reveal";
@@ -40,6 +41,7 @@ const WishedProductsGrid = styled.div`
   gap: 40px;
 `;
 
+
 export default function AccountPage(){
     const {data:session} = useSession();
     const [name,setName] = useState('');
@@ -55,16 +57,9 @@ export default function AccountPage(){
     const [activeTab, setActiveTab] = useState('Orders');
     const [orders, setOrders] = useState([]);
     const [isEditing, setIsEditing] = useState(false); // Added state for tracking editing mode
-
-
-    const countries = [
-        "Afghanistan",
-        "Albania",
-        "Algeria",
-        "Andorra",
-        // ... add more countries as needed
-    ];
     
+   
+
     async function logout() {
         await signOut({
         callbackUrl: process.env.NEXT_PUBLIC_URL,
@@ -200,6 +195,11 @@ export default function AccountPage(){
                             value={email}
                             name="email"
                             onChange={ev => setEmail(ev.target.value)}/>
+                        <Input type="text"
+                            placeholder="Country"
+                            value={country}
+                            name="country"
+                            onChange={ev => setCountry(ev.target.value)}/>
                         <CityHolder>
                         <Input type="text"
                                 placeholder="City"
@@ -217,11 +217,10 @@ export default function AccountPage(){
                             value={streetAddress}
                             name="streetAddress"
                             onChange={ev => setStreetAddress(ev.target.value)}/>
-                        <Input type="text"
-                            placeholder="Country"
-                            value={country}
-                            name="country"
-                            onChange={ev => setCountry(ev.target.value)}/>
+                        
+
+                    
+                                            
                                             <Button black block
                                 onClick={saveAddress}>
                 {isEditing ? 'Save' : 'Edit'} {/* Change button text based on editing mode */}

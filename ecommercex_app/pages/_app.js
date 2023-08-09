@@ -1,4 +1,5 @@
 import { CartContextProvider } from "@/components/CartContext";
+
 import { SessionProvider } from "next-auth/react";
 import {createGlobalStyle} from "styled-components";
 
@@ -24,12 +25,11 @@ export default function App({ Component, pageProps: {session, ...pageProps} }) {
   return (
     <>
       <GlobalStyles/>
-      <SessionProvider session={session}>
-        <CartContextProvider>
-          <Component {...pageProps} /> 
-        </CartContextProvider>
-      </SessionProvider>
-
+        <SessionProvider session={session}>
+          <CartContextProvider>
+            <Component {...pageProps} /> 
+          </CartContextProvider>
+        </SessionProvider>
     </>
   );
 }
