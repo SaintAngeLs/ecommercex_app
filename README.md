@@ -65,6 +65,7 @@ The following lists detail the technologies, libraries, and packages used in the
 - **D3**: A library for producing dynamic, interactive data visualizations.
 - **Axios**: A promise-based HTTP client.
 - **Jest**: A JavaScript testing framework.
+- **TailwindCSS**: The headers used for styling
 
 
 ## Frontend (`ecommercefront`) Packages
