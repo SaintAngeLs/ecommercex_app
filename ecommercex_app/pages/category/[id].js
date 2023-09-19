@@ -18,6 +18,7 @@ const FilterWrapper = styled.div`
 const CategoryTitleHeader = styled.div`
     display: flex;
     align-items: center;
+    margin-top: 7rem;
     justify-content: space-between;
     h1{
     font-size:1.5em;

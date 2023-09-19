@@ -43,7 +43,7 @@ const Logo = styled(Link)`
 const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
-    padding: 25px 0;
+    padding: 5px 0;
     align-items: center;
     
 `;
