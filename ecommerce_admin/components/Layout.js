@@ -11,7 +11,7 @@ export default function Layout({children}) {
   if(!session)
   {
     return (
-      <div className="bg-bgGray w-screen h-screen flex justify-between items-center">
+      <div className="bg-bgGray w-screen h-screen flex justify-between items-center relative">
         <div className='text-center w-full'>
           <button onClick = {() => {signIn('google')}} className='bg-white p-2 rounded-lg'>Login with google</button>
         </div>
@@ -28,7 +28,7 @@ export default function Layout({children}) {
     )
   }
   return (
-    <div className='bg-bgGray min-h-screen p-5'>
+    <div className='bg-bgGray min-h-screen p-5 relative'>
       <div className="flex md:hidden items-center" >
         <button onClick={() => setShowNavbar(true)}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">

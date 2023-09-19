@@ -5,11 +5,12 @@ import { useSession } from 'next-auth/react'
 
 
 
+
 export default function Home() {
-  const {data: session} = useSession();
 
   return(
-    <Layout> 
+    <Layout>
+      
       <HomeHeader/>
       <HomePageStats/>
       {/* <div className='text-blue-900 flex justify-between'>

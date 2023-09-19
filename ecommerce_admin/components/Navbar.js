@@ -17,7 +17,7 @@ const Navbar = ({show}) => {
   }
 
   return (
-    <aside className={(show?'left-0':'-left-full') + " text-gray-600 top-0 p-2 pr-0 fixed w-full h-full bg-bgGray -left-full md:static md:w-auto transition-all"}>
+    <aside className={(show?'left-0':'-left-full') + " text-gray-600 top-0 p-2 pr-0 fixed w-full h-full bg-bgGray -left-full md:static md:w-auto transition-all z-10"}>
         <div className='mb-5 mr-5'>
             <Logo/>
         </div>
