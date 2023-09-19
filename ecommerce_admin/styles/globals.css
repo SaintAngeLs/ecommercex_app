@@ -47,3 +47,12 @@ img{
 .button-default{
   @apply bg-white text-gray-800 border border-gray-200 py-1 px-4 rounded-md shadow-sm;
 }
+
+.navIcon {
+  transition: all 0.3s; /* For a smooth transition effect */
+}
+
+.navIcon:hover {
+  /* Define your hover effect here, e.g. change color */
+  stroke: #FF4500; /* This changes the SVG line color on hover. Modify as needed. */
+}
