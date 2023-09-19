@@ -115,7 +115,7 @@ export default function HomePageStats() {
       <Grid container spacing={3}>
 
         <Grid container spacing={3}>
-            <Typography variant="h5">Monthly Orders Line Chart</Typography>
+            <Typography variant="h4">Monthly Orders Line Chart</Typography>
             <ResponsiveContainer width='100%' height={400}>
                 <LineChart data={getMonthlyOrderCounts(orders)}>
                     <XAxis dataKey="name" />
@@ -128,7 +128,7 @@ export default function HomePageStats() {
 
 
         <Grid item xs={12}>
-            <Typography variant="h5">Monthly Orders</Typography>
+            <Typography variant="h4">Monthly Orders</Typography>
             <ResponsiveContainer width='100%' height={400}>
                 <BarChart data={getMonthlyOrderCounts(orders)}>
                     <XAxis dataKey="name" />
@@ -149,7 +149,7 @@ export default function HomePageStats() {
                   <Typography color="textSecondary" gutterBottom>
                       Today
                   </Typography>
-                  <Typography variant="h5" component="h2">
+                  <Typography variant="h4" component="h2">
                       {ordersToday.length}
                   </Typography>
                   <Typography variant="body2" component="p">
@@ -174,7 +174,7 @@ export default function HomePageStats() {
                   <Typography color="textSecondary" gutterBottom>
                       This week
                   </Typography>
-                  <Typography variant="h5" component="h2">
+                  <Typography variant="h4" component="h2">
                       {ordersPerWeek.length}
                   </Typography>
                   <Typography variant="body2" component="p">
@@ -200,7 +200,7 @@ export default function HomePageStats() {
                   <Typography color="textSecondary" gutterBottom>
                       This Month
                   </Typography>
-                  <Typography variant="h5" component="h2">
+                  <Typography variant="h4" component="h2">
                       {ordersPerMonth.length}
                   </Typography>
                   <Typography variant="body2" component="p">
@@ -226,7 +226,7 @@ export default function HomePageStats() {
                   <Typography color="textSecondary" gutterBottom>
                       This Year
                   </Typography>
-                  <Typography variant="h5" component="h2">
+                  <Typography variant="h4" component="h2">
                       {ordersPerYear.length}
                   </Typography>
                   <Typography variant="body2" component="p">
