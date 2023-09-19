@@ -2,7 +2,14 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Spineer from './Spinner';
 import { subHours } from "date-fns";
-import { BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip,Bar } from 'recharts';
+import { BarChart, 
+    ResponsiveContainer, 
+    XAxis, 
+    YAxis, 
+    Tooltip, 
+    Bar, 
+    LineChart, 
+    Line } from 'recharts';
 import { Typography, Card, CardContent, Grid,  CardHeader, IconButton, CircularProgress } from '@material-ui/core';
 import { Money } from '@material-ui/icons';
 
@@ -43,6 +50,23 @@ export default function HomePageStats() {
         return new Intl.NumberFormat("pl-PL").format(resultSum);
     }
 
+    function getMonthlyOrderCounts(orders) {
+        const months = Array(12).fill(0);  // Initialize an array with 12 zeros (one for each month)
+    
+        orders.forEach(order => {
+            const month = new Date(order.createdAt).getMonth(); // getMonth() returns 0-11 for Jan-Dec
+            months[month]++;
+        });
+    
+        // Map the monthly counts to an array of objects for the bar chart
+        const monthLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        return months.map((count, index) => ({
+            name: monthLabels[index],
+            orders: count
+        }));
+    }
+    
+
     if(isLoading)
     {
         return(
@@ -53,8 +77,16 @@ export default function HomePageStats() {
     }
 
     const ordersToday = orders.filter(
-        (order) => new Date(order.createdAt) < subHours(new Date(), 24)
+        (order) => {
+            const orderDate = new Date(order.createdAt);
+            const currentDate = new Date();
+    
+            return orderDate.getDate() === currentDate.getDate() &&
+                   orderDate.getMonth() === currentDate.getMonth() &&
+                   orderDate.getFullYear() === currentDate.getFullYear();
+        }
     );
+    
 
     const ordersPerWeek = orders.filter(
         (order) => new Date(order.createdAt) > subHours(new Date(), 7 * 24)
@@ -79,7 +111,34 @@ export default function HomePageStats() {
     }
 
     return (
+    <div className="my-10 mx-3">
       <Grid container spacing={3}>
+
+        <Grid container spacing={3}>
+            <Typography variant="h5">Monthly Orders Line Chart</Typography>
+            <ResponsiveContainer width='100%' height={400}>
+                <LineChart data={getMonthlyOrderCounts(orders)}>
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Line type="monotone" dataKey="orders" stroke="#3f51b5" />
+                </LineChart>
+            </ResponsiveContainer>
+        </Grid>
+
+
+        <Grid item xs={12}>
+            <Typography variant="h5">Monthly Orders</Typography>
+            <ResponsiveContainer width='100%' height={400}>
+                <BarChart data={getMonthlyOrderCounts(orders)}>
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Bar dataKey="orders" fill="#3f51b5" />
+                </BarChart>
+            </ResponsiveContainer>
+        </Grid>
+
       <Grid item xs={12}>
           <Typography variant="h4">Total orders</Typography>
       </Grid>
@@ -295,6 +354,7 @@ export default function HomePageStats() {
           </Card>
       </Grid>
   </Grid>
+  </div>
     
 
     )
