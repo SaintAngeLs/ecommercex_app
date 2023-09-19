@@ -1,3 +1,4 @@
+import HomeHeader from "@/components/HomeHeader";
 import Layout from "@/components/Layout"
 import axios from "axios"
 import Link from "next/link"
@@ -39,6 +40,7 @@ export default function Products () {
     }
     return (
         <Layout>
+            <HomeHeader/>
             <Link className = "button-primary-version" href={"/products/new"}>Add new product</Link>
             <table className="basic-table-products mt-2 mb-2">
                 <thead>

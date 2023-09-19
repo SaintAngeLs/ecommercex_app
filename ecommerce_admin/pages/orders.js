@@ -1,3 +1,4 @@
+import HomeHeader from "@/components/HomeHeader";
 import Layout from "@/components/Layout";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -11,6 +12,7 @@ export default function OrdersPage() {
     }, [])
     return (
         <Layout>
+            <HomeHeader/>
             <h1>Orders</h1>
             <table className="basic-table-products">
 

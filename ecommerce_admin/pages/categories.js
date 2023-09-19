@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { withSwal } from 'react-sweetalert2';
 import { Tree } from 'react-d3-tree';
+import HomeHeader from "@/components/HomeHeader";
 
 function Categories({ swal }) {
   const [editedCategory, setEditedCategory] = useState(null);
@@ -145,6 +146,7 @@ function Categories({ swal }) {
 
   return (
     <Layout>
+      <HomeHeader/>
       <h1>Categories</h1>
       <label>{editedCategory ? `Edit category "${editedCategory.name}"` : `Create new category`}</label>
       <form onSubmit={saveCategory}>
