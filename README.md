@@ -1,9 +1,18 @@
 ## Images 
 
+# Frontedn client-side
 ![Image 1](images/image1.png)
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Some images will also go here ...
 
+![Image 2](images/imageAdmin_1_1.png)
+![Image 2](images/imageAdmin_1_2.png)
+![Image 2](images/imageAdmin_2.png)
+![Image 2](images/imageAdmin_3.png)
+![Image 2](images/imageAdmin_4.png)
+![Image 2](images/imageAdmin_5.png)
+![Image 2](images/imageAdmin_6.png)
+![Image 2](images/imageAdmin_7.png)
 
 ## Getting Started
 
