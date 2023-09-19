@@ -10,6 +10,7 @@ export default function HomeHeader() {
           <img src={session?.user?.image} alt="" className="w-10 h-10 rounded-[4px]"/>
 
           <div className="flex flex-col">
+
             <span className="px-3">
               {session?.user?.name}
             </span>
@@ -17,7 +18,9 @@ export default function HomeHeader() {
             <span className="px-3 font-normal text-xs">
               {session?.user?.email}
             </span>
+            
           </div>
+
         </div>
       </div>
     </div>
