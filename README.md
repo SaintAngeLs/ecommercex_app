@@ -3,12 +3,12 @@
 
 ecommercex_nextjs_app is a robust e-commerce solution designed with the latest web technologies, focusing on delivering a seamless user experience both for consumers and administrators.
 
-## 🖼️  Images 
-# Frontend client-side
+# 🖼️  Images 
+##  Frontend client-side
 ![Image 1](images/image1.png)
 
 Some images will also go here ...
-
+##  Admin pannel
 ![Image 2](images/imageAdmin_1_1.png)
 ![Image 2](images/imageAdmin_1_2.png)
 ![Image 2](images/imageAdmin_2.png)

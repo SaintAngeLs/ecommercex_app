@@ -6,7 +6,7 @@ import Input from "../components/Input";
 import axios from "axios";
 import ProductsGrid from "@/components/ProductsGrid";
 import Footer from "@/components/Footer";
-import Featured from "@/components/Featured";
+
 
 const SearchInput = styled(Input)`
     margin-top: 10rem;
@@ -44,17 +44,17 @@ export default function SearchPage() {
     return (
     <>
         <Header />
-            <CenterFlex>
-                <SearchInput 
-                 autoFocus
-                 value={phrase}
-                 onChange={(ev) => setPhrase(ev.target.value)}    
-                 placeholder="Search for products..." />
-                 <ProductsGridFlex products={products} />
-            </CenterFlex>
 
-            
-            <Footer/>
+        <CenterFlex>
+            <SearchInput 
+                autoFocus
+                value={phrase}
+                onChange={(ev) => setPhrase(ev.target.value)}    
+                placeholder="Search for products..." />
+                <ProductsGridFlex products={products} />
+        </CenterFlex>
+
+        <Footer/>
         </>
     )
 }
