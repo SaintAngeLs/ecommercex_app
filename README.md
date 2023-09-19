@@ -1,5 +1,9 @@
-## Images 
 
+# ecommercex_nextjs_app
+
+ecommercex_nextjs_app is a robust e-commerce solution designed with the latest web technologies, focusing on delivering a seamless user experience both for consumers and administrators.
+
+## 🖼️  Images 
 # Frontend client-side
 ![Image 1](images/image1.png)
 
@@ -14,39 +18,65 @@ Some images will also go here ...
 ![Image 2](images/imageAdmin_6.png)
 ![Image 2](images/imageAdmin_7.png)
 
-## Getting Started
+### Installation & Setup
 
-First, run the development server:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/SaintAngeLs/ecommercex_app.git
+   cd ecommercex_app
+   ```
+2. Install the dependencies
+    ```bash
+        npm install
+        # or
+        yarn install
+        # or
+        pnpm install
+    ```
+3. Runing
+ - To start the frontend:
+    ```bash 
+     cd ecommercex_app
+     npm run dev   
+    ```
+ - To start the admin-frontend:
+    ```bash 
+     cd ecommerce_admin
+     npm run dev   
+    ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+# ecommercex_nextjs_app Technologies and Packages
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The following lists detail the technologies, libraries, and packages used in the development of the `ecommercex_nextjs_app` and its frontend.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Core Technologies
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- **Next.js**: A React framework that enables features like server-side rendering and generating static websites for React-based web applications.
+- **Node.js**: A runtime that lets you execute JavaScript server-side.
+- **MongoDB**: A NoSQL database that uses JSON-like documents with optional schemas.
+- **Material-UI**: A popular React UI framework.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Backend (`ecommerce`) Packages
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **AWS SDK for JavaScript**: For interacting with Amazon Web Services.
+- **Material-UI**: Core components and icons.
+- **MongoDB and Mongoose**: For database management.
+- **NextAuth**: Authentication for Next.js applications.
+- **D3**: A library for producing dynamic, interactive data visualizations.
+- **Axios**: A promise-based HTTP client.
+- **Jest**: A JavaScript testing framework.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Frontend (`ecommercefront`) Packages
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Apollo Client**: State management library for React that integrates with GraphQL.
+- **FontAwesome**: Provides scalable vector icons that can be customized with CSS.
+- **Stripe**: Online payment processing for internet businesses.
+- **Framer Motion**: A library to create animations and interactions in React.
+- **GraphQL**: A query language for your API.
+- **NextReveal**: Allows reveal animations with SSR compatibility for Next.js.
+- **Nodemailer**: Send emails easily.
+- **Styled Components**: Visual primitives for the component age.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Note: For detailed version information and additional packages, refer to the respective `package.json` files.
