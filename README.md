@@ -1,6 +1,6 @@
 ## Images 
 
-# Frontedn client-side
+# Frontend client-side
 ![Image 1](images/image1.png)
 
 Some images will also go here ...
